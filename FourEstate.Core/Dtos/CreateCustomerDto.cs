@@ -10,26 +10,26 @@ namespace FourEstate.Core.Dtos
 {
     public class CreateCustomerDto
     {
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الاسم الأول")]
         public string FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الاسم الثاني")]
         public string LastName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الاسم كامل")]
         public string FullName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "تاريخ الميلاد")]
         [DataType(DataType.Date)]
         public DateTime? DOB { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الصورة الشخصية")]
         public IFormFile ImageUrl { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "رقم الجوال")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "موقعك")]
         public int LocationId { get; set; }
     }

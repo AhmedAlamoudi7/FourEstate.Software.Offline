@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FourEstate.Core.Enums;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,22 +11,29 @@ namespace FourEstate.Core.Dtos
 {
     public class CreateRealEstateDto
     {
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "اسم العقار")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الوصف")]
         public string Description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الموقع")]
-        public string LocationId { get; set; }
-        [Required]
-        [Display(Name = "التصنيف")]
-        public string CategoryId { get; set; }
+        public int LocationId { get; set; }
+        public CreateLocationDto Location { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "التصنيف")]
+        public int CategoryId { get; set; }
+        public CreateCategoryDto Category { get; set; }
+
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الصور")]
-        public List<IFormFile> Images { get; set; }
+        public IFormFile ImageUrl { get; set; }
+
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "نوع العقار")]
+        public RealEstateType RealEstateType { get; set; }
     }
 }

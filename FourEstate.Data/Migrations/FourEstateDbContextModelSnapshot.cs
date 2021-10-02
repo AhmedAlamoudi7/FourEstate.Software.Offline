@@ -19,6 +19,59 @@ namespace FourEstate.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("FourEstate.Data.Models.Advertisement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OwnerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WebsiteUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Advertisements");
+                });
+
             modelBuilder.Entity("FourEstate.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -161,17 +214,8 @@ namespace FourEstate.Data.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("RealEstateId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RealEstateddId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -180,8 +224,6 @@ namespace FourEstate.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RealEstateId");
 
                     b.ToTable("Images");
                 });
@@ -244,6 +286,9 @@ namespace FourEstate.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
@@ -253,6 +298,9 @@ namespace FourEstate.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RealEstateType")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -493,6 +541,15 @@ namespace FourEstate.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("FourEstate.Data.Models.Advertisement", b =>
+                {
+                    b.HasOne("FourEstate.Data.Models.User", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId");
+
+                    b.Navigation("Owner");
+                });
+
             modelBuilder.Entity("FourEstate.Data.Models.Contract", b =>
                 {
                     b.HasOne("FourEstate.Data.Models.Customer", "Customer")
@@ -519,15 +576,6 @@ namespace FourEstate.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Location");
-                });
-
-            modelBuilder.Entity("FourEstate.Data.Models.Image", b =>
-                {
-                    b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
-                        .WithMany("Images")
-                        .HasForeignKey("RealEstateId");
-
-                    b.Navigation("RealEstate");
                 });
 
             modelBuilder.Entity("FourEstate.Data.Models.RealEstate", b =>
@@ -620,8 +668,6 @@ namespace FourEstate.Data.Migrations
             modelBuilder.Entity("FourEstate.Data.Models.RealEstate", b =>
                 {
                     b.Navigation("Contracts");
-
-                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

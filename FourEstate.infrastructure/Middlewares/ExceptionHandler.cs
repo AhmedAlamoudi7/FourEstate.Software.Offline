@@ -38,6 +38,8 @@ namespace FourEstate.Infrastructure.Middlewares
                 case DuplicateEmailOrPhoneException _:
                 case EntityNotFoundException _:
                 case OperationFailedException _:
+                case InvalidDataException _:
+
                     response.msg = $"e:{exception.Message}";
                     response.close = 0;
                     response.status = 0;

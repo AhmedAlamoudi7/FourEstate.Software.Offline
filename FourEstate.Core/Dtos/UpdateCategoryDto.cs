@@ -10,7 +10,7 @@ namespace FourEstate.Core.Dtos
     public class UpdateCategoryDto
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "اسم التصنيف")]
         public string Name { get; set; }
     }

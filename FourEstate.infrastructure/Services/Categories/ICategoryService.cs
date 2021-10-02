@@ -1,4 +1,5 @@
 ﻿using FourEstate.Core.Dtos;
+using FourEstate.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace FourEstate.Infrastructure.Services.Categories
     public interface ICategoryService
     {
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
+        Task<List<RealEstateViewModel>> GetCategoryName();
 
         Task<int> Create(CreateCategoryDto dto);
 

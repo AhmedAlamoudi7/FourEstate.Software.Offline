@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FourEstate.Infrastructure.Services.Locations
+namespace FourEstate.Infrastructure.Services.LocationsService
 {
     public class LocationService : ILocationService
     {
@@ -27,16 +27,16 @@ namespace FourEstate.Infrastructure.Services.Locations
 
         public async Task<ResponseDto> GetAll(Pagination pagination, Query query)
         {
-            var queryString = _db.Locations.Where(x => !x.IsDelete && (x.Country.Contains(query.GeneralSearch) || x.City.Contains(query.GeneralSearch) || x.Street.Contains(query.GeneralSearch) || string.IsNullOrWhiteSpace(query.GeneralSearch))).AsQueryable();
+            var queryString = _db.Locations.Where(x => !x.IsDelete && (x.Country.Contains(query.GeneralSearch) || string.IsNullOrWhiteSpace(query.GeneralSearch))).AsQueryable();
 
             var dataCount = queryString.Count();
             var skipValue = pagination.GetSkipValue();
             var dataList = await queryString.Skip(skipValue).Take(pagination.PerPage).ToListAsync();
-            var locations = _mapper.Map<List<LocationViewModel>>(dataList);
+            var location = _mapper.Map<List<LocationViewModel>>(dataList);
             var pages = pagination.GetPages(dataCount);
             var result = new ResponseDto
             {
-                data = locations,
+                data = location,
                 meta = new Meta
                 {
                     page = pagination.Page,
@@ -48,52 +48,55 @@ namespace FourEstate.Infrastructure.Services.Locations
             return result;
         }
 
+        public async Task<List<LocationViewModel>> GetLocationCountry()
+        {
+            var location = await _db.Locations.Where(x => !x.IsDelete).ToListAsync();
+            return _mapper.Map<List<LocationViewModel>>(location);
+        }
 
         public async Task<int> Create(CreateLocationDto dto)
         {
-            var locations = _mapper.Map<Location>(dto);
-            await _db.Locations.AddAsync(locations);
+            var location = _mapper.Map<Location>(dto);
+            await _db.Locations.AddAsync(location);
             await _db.SaveChangesAsync();
-            return locations.Id;
+            return location.Id;
         }
-
 
         public async Task<int> Update(UpdateLocationDto dto)
         {
-            var locations = await _db.Locations.SingleOrDefaultAsync(x => !x.IsDelete && x.Id == dto.Id);
-            if(locations == null)
+            var location= await _db.Locations.SingleOrDefaultAsync(x => !x.IsDelete && x.Id == dto.Id);
+            if (location == null)
             {
                 throw new EntityNotFoundException();
             }
-            var updatedLocations = _mapper.Map<UpdateLocationDto, Location>(dto, locations);
-            _db.Locations.Update(updatedLocations);
+            var updatedLocation = _mapper.Map<UpdateLocationDto, Location>(dto, location);
+          
+            _db.Locations.Update(updatedLocation);
             await _db.SaveChangesAsync();
-            return updatedLocations.Id;
+            return updatedLocation.Id;
         }
 
 
         public async Task<UpdateLocationDto> Get(int Id)
         {
-            var locations = await _db.Locations.SingleOrDefaultAsync(x => x.Id == Id && !x.IsDelete);
-            if (locations == null)
+            var location = await _db.Locations.SingleOrDefaultAsync(x => x.Id == Id && !x.IsDelete);
+            if (location == null)
             {
                 throw new EntityNotFoundException();
             }
-            return _mapper.Map<UpdateLocationDto>(locations);
+            return _mapper.Map<UpdateLocationDto>(location);
         }
 
-
-        public async Task<int> Delete(int Id)
-        {
-            var locations = await _db.Locations.SingleOrDefaultAsync(x => x.Id == Id && !x.IsDelete);
-            if (locations == null)
+              public async Task<int>Delete(int Id) {
+            var location = await _db.Locations.SingleOrDefaultAsync(x => x.Id == Id && !x.IsDelete);
+            if (location == null)
             {
                 throw new EntityNotFoundException();
             }
-            locations.IsDelete = true;
-            _db.Locations.Update(locations);
+            location.IsDelete = true;
+            _db.Locations.Update(location);
             await _db.SaveChangesAsync();
-            return locations.Id;
+            return location.Id;
         }
 
 

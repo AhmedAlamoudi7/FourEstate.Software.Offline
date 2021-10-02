@@ -52,6 +52,17 @@ namespace FourEstate.Infrastructure.Services.Customers
         }
 
 
+
+        public async Task<List<CustomerViewModel>> GetCustomerName()
+        {
+            var customer = await _db.Customers.Where(x => !x.IsDelete).ToListAsync();
+            return _mapper.Map<List<CustomerViewModel>>(customer);
+        }
+
+
+
+
+
         public async Task<int> Create(CreateCustomerDto dto)
         {
             var customer = _mapper.Map<Customer>(dto);

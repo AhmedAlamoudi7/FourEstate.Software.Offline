@@ -37,9 +37,24 @@ namespace FourEstate.Infrastructure.AutoMapper
            
             
             CreateMap<RealEstate, RealEstateViewModel>();
-            CreateMap<CreateRealEstateDto, RealEstate>().ForMember(x => x.Images, x => x.Ignore());
-            CreateMap<UpdateRealEstateDto, RealEstate>().ForMember(x => x.Images, x => x.Ignore());
-            CreateMap<RealEstate, UpdateRealEstateDto>().ForMember(x => x.Images, x => x.Ignore());
+            CreateMap<CreateRealEstateDto, RealEstate>().ForMember(x => x.ImageUrl, x => x.Ignore());
+            CreateMap<UpdateRealEstateDto, RealEstate>().ForMember(x => x.ImageUrl, x => x.Ignore());
+            CreateMap<RealEstate, UpdateRealEstateDto>().ForMember(x => x.ImageUrl, x => x.Ignore());
+
+
+
+            CreateMap<Advertisement, AdvertisementViewModel>().ForMember(x => x.StartDate, x => x.MapFrom(x => x.StartDate.ToString("yyyy:MM:dd"))).ForMember(x => x.EndDate, x => x.MapFrom(x => x.EndDate.ToString("yyyy:MM:dd")));
+            CreateMap<CreateAdvertisementDto, Advertisement>().ForMember(x => x.ImageUrl, x => x.Ignore()).ForMember(x => x.Owner, x => x.Ignore());
+            CreateMap<UpdateAdvertisementDto, Advertisement>().ForMember(x => x.ImageUrl, x => x.Ignore()).ForMember(x => x.Owner, x => x.Ignore());
+            CreateMap<Advertisement, UpdateAdvertisementDto>().ForMember(x => x.Image, x => x.Ignore());
+
+
+            CreateMap<Contract, ContractViewModel>();
+            CreateMap<CreateContractDto, Contract>();
+            CreateMap<UpdateContractDto, Contract>();
+            CreateMap<Contract, UpdateContractDto>();
+
+
         }
     }
 }

@@ -8,10 +8,10 @@ namespace FourEstate.Data.Models
 {
     public class Image :BaseEntity
     {
-        public string ImagePath { get; set; }
+        //public string ImagePath { get; set; }
 
-        public int RealEstateddId { get; set; }
-        public RealEstate RealEstate { get; set; }
+        //public int RealEstateddId { get; set; }
+        //public RealEstate RealEstate { get; set; }
 
     }
 }

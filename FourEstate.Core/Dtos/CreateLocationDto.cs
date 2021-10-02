@@ -9,19 +9,19 @@ namespace FourEstate.Core.Dtos
 {
     public class CreateLocationDto
     {
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "اسم الدولة")]
         public string Country { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "اسم المدينة")]
         public string City { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "اسم الشارع")]
         public string Street { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "رقم الشارع")]
         public string StreetNumber { get; set; }
     }

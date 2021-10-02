@@ -1,4 +1,5 @@
 ﻿using FourEstate.Core.Dtos;
+using FourEstate.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace FourEstate.Infrastructure.Services.Customers
     public interface ICustomerService
     {
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
+
+
+        Task<List<CustomerViewModel>> GetCustomerName();
 
         Task<int> Create(CreateCustomerDto dto);
 

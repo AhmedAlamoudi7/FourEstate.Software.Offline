@@ -9,12 +9,15 @@ namespace FourEstate.Core.ViewModels
     public class RealEstateViewModel
     {
         public int Id { get; set; }
+      
         public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public int LocationId { get; set; }
+        public string RealEstateType { get; set; }
 
-        public int CategoryId { get; set; }
+        public LocationViewModel Location { get; set; }
+
+        public CategoryViewModel Category { get; set; }
     }
 }

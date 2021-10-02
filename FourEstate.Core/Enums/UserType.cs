@@ -9,8 +9,8 @@ namespace FourEstate.Core.Enums
     public enum  UserType
     {
         Administrator = 1,
-        Customer = 2,       
-        advertisment= 3
+        Customer = 2,
+        AdvertisementOwner = 4
     }
 
 }

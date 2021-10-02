@@ -12,14 +12,14 @@ namespace FourEstate.Core.Dtos
     public class UpdateUserDto
     {
         public string Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "اسم المستخدم")]
         public string FullName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [EmailAddress]
         [Display(Name = "البريد الالكتروني ")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Phone]
         [Display(Name = "رقم الجوال ")]
         public string PhoneNumber { get; set; }
@@ -28,7 +28,7 @@ namespace FourEstate.Core.Dtos
         [Display(Name = "تاريخ الميلاد")]
         [DataType(DataType.Date)]
         public DateTime? DOB { get; set; }
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "نوع المستخدم")]
         public UserType UserType { get; set; }
     }
