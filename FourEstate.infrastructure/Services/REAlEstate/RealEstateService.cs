@@ -51,6 +51,12 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
         }
 
 
+        public async Task<List<RealEstateViewModel>> GetRealEstateName()
+        {
+            var realEstates = await _db.RealEstates.Where(x => !x.IsDelete).ToListAsync();
+            return _mapper.Map<List<RealEstateViewModel>>(realEstates);
+        }
+
 
         public async Task<int> Delete(int id)
         {

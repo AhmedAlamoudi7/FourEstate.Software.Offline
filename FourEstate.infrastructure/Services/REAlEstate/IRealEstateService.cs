@@ -1,4 +1,5 @@
 ﻿using FourEstate.Core.Dtos;
+using FourEstate.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,7 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
         Task<UpdateRealEstateDto> Get(int id);
         Task<int> Create(CreateRealEstateDto dto);
         Task<int> Update(UpdateRealEstateDto dto);
-        //Task<int> Update(UpdateCategoryDto dto);
+        Task<List<RealEstateViewModel>> GetRealEstateName();
 
-        //Task<UpdateCategoryDto> Get(int Id);
-
-        //Task<int> Delete(int Id);
     }
 }

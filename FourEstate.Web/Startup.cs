@@ -1,11 +1,12 @@
 using FourEstate.Data;
 using FourEstate.Data.Models;
+using FourEstate.infrastructure.Services.ContractSS;
+using FourEstate.infrastructure.Services.Dashbords;
 using FourEstate.Infrastructure.AutoMapper;
 using FourEstate.Infrastructure.Middlewares;
 using FourEstate.Infrastructure.Services;
 using FourEstate.Infrastructure.Services.Advertisements;
 using FourEstate.Infrastructure.Services.Categories;
-using FourEstate.Infrastructure.Services.ContractServices;
 using FourEstate.Infrastructure.Services.Customers;
 using FourEstate.Infrastructure.Services.LocationsService;
 using FourEstate.Infrastructure.Services.REAlEstate;
@@ -62,8 +63,9 @@ namespace FourEstate.Web
             services.AddTransient<ILocationService, LocationService>();
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IAdvertisementService, AdvertisementService>();
-            services.AddTransient<IContractService, ContractService>();
+           services.AddTransient<IContractService, ContractService>();
             services.AddTransient<IRealEstateService, RealEstateService>();
+            services.AddTransient<IDashboardService, DashboardService>();
 
 
 

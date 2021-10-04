@@ -17,7 +17,7 @@ namespace FourEstate.Core.Dtos
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "السعر")]
-        public string Price { get; set; }
+        public double Price { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الزبون")]

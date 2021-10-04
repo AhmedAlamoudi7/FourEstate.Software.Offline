@@ -18,7 +18,7 @@ namespace FourEstate.Data.Models
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
-        public int RealEstatedId { get; set; }
+        public int RealEstateId { get; set; }
         public RealEstate RealEstate { get; set; }
     }
 }

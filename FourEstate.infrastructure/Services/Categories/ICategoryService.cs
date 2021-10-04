@@ -11,8 +11,7 @@ namespace FourEstate.Infrastructure.Services.Categories
     public interface ICategoryService
     {
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
-        Task<List<RealEstateViewModel>> GetCategoryName();
-
+        Task<List<CategoryViewModel>> GetCategoryName();
         Task<int> Create(CreateCategoryDto dto);
 
         Task<int> Update(UpdateCategoryDto dto);

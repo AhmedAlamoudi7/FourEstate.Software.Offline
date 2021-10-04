@@ -48,10 +48,10 @@ namespace FourEstate.Infrastructure.Services.Categories
             return result;
         }
 
-        public async Task<List<RealEstateViewModel>> GetCategoryName()
+        public async Task<List<CategoryViewModel>> GetCategoryName()
         {
-            var realEstates = await _db.RealEstates.Where(x => !x.IsDelete).ToListAsync();
-            return _mapper.Map<List<RealEstateViewModel>>(realEstates);
+            var category = await _db.Categories.Where(x => !x.IsDelete).ToListAsync();
+            return _mapper.Map<List<CategoryViewModel>>(category);
         }
 
 

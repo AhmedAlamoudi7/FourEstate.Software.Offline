@@ -43,21 +43,25 @@ var KTDatatableAutoColumnHideDemo = function () {
                 width: 'auto'
             }, {
                 field: 'contractType',
-                title: 'نوع العقد ',
-                width: '150'
-            }, {
+                title: 'نوع العقد',
+                width: '100'
+            },
+            {
                 field: 'price',
-                title: 'السعر ',
-                width: '150'
-            }, {
-                field: 'customerId',
-                title: 'اسم الزبون ',
-                width: '250'
-            }, {
-                field: 'realEstatedId',
-                title: 'اسم العقار ',
+                title: 'السعر',
+                width: '100'
+            },
+            {
+                field: 'customer.fullName',
+                title: 'الزبون',
                 width: '150'
             },
+            {
+                field: 'realEstate.name',
+                title: 'العقار',
+                width: '100'
+            },
+
             {
                 field: 'Actions',
                 title: 'العمليات',

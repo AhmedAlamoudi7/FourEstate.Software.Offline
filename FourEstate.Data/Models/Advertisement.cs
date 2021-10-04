@@ -9,7 +9,6 @@ namespace FourEstate.Data.Models
 {
     public class Advertisement : BaseEntity
     {
-        public int Id { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]

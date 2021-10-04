@@ -13,15 +13,15 @@ namespace FourEstate.Core.Dtos
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "نوع العقد")]
         public ContractType ContractType { get; set; }
-        
+
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "السعر")]
-        public string Price { get; set; }
-        
+        public double Price { get; set; }
+
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الزبون")]
         public int CustomerId { get; set; }
-      
+
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "العقار")]
         public int RealEstatedId { get; set; }

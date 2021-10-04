@@ -130,10 +130,7 @@ namespace FourEstate.Data.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int?>("RealEstateId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RealEstatedId")
+                    b.Property<int>("RealEstateId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -560,7 +557,9 @@ namespace FourEstate.Data.Migrations
 
                     b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
                         .WithMany("Contracts")
-                        .HasForeignKey("RealEstateId");
+                        .HasForeignKey("RealEstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Customer");
 

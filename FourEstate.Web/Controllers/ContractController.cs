@@ -1,7 +1,8 @@
 ﻿using FourEstate.Core.Constants;
 using FourEstate.Core.Dtos;
-using FourEstate.Infrastructure.Services.ContractServices;
+using FourEstate.infrastructure.Services.ContractSS;
 using FourEstate.Infrastructure.Services.Customers;
+using FourEstate.Infrastructure.Services.REAlEstate;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -13,35 +14,40 @@ namespace FourEstate.Web.Controllers
 {
     public class ContractController : Controller
     {
-
         private readonly IContractService _contractService;
         private readonly ICustomerService _customerService;
-        //private readonly IRealEstateService _realEstateService;
+        private readonly IRealEstateService _realEstateService;
 
-        public ContractController(IContractService contractService, ICustomerService customerService/*, IRealEstateService realEstateService*/)
+        public ContractController(IContractService contractService, ICustomerService customerService, IRealEstateService realEstateService)
         {
             _contractService = contractService;
             _customerService = customerService;
-            //_realEstateService = realEstateService;
+            _realEstateService = realEstateService;
         }
 
-        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
-        public async Task<JsonResult> GetContractData(Pagination pagination,Query query)
+
+
+
+        public async Task<JsonResult> GetContractData(Pagination pagination, Query query)
         {
             var result = await _contractService.GetAll(pagination, query);
-            return  Json(result);
+            return Json(result);
         }
+
+
 
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            ViewData["Customers"] = new SelectList(await _customerService.GetCustomerName(), "Id", "FullName");
-        //    ViewData["realEstates"] = new SelectList(await _realEstateService.GetRelEstateName(), "Id", "FullName");
+
+            ViewData["customer"] = new SelectList(await _customerService.GetCustomerName(), "Id", "FullName");
+            ViewData["realeste"] = new SelectList(await _realEstateService.GetRealEstateName(), "Id", "Name");
+
             return View();
         }
 
@@ -53,18 +59,20 @@ namespace FourEstate.Web.Controllers
                 await _contractService.Create(dto);
                 return Ok(Results.AddSuccessResult());
             }
-            ViewData["Customers"] = new SelectList(await _customerService.GetCustomerName(), "Id", "FullName");
-          //  ViewData["realEstates"] = new SelectList(await _realEstateService.GetRelEstateName(), "Id", "Name");
+
+            ViewData["customer"] = new SelectList(await _customerService.GetCustomerName(), "Id", "FullName");
+            ViewData["realeste"] = new SelectList(await _realEstateService.GetRealEstateName(), "Id", "Name");
+
             return View(dto);
         }
 
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var user = await _contractService.Get(id);
-            ViewData["customers"] = new SelectList(await _customerService.GetCustomerName(), "Id", "FullName");
-           // ViewData["realEstates"] = new SelectList(await _realEstateService.GetRelEstateName(), "Id", "FullName");
-            return View(user);
+            ViewData["customer"] = new SelectList(await _customerService.GetCustomerName(), "Id", "FullName");
+            ViewData["realeste"] = new SelectList(await _realEstateService.GetRealEstateName(), "Id", "Name");
+            var contract = await _contractService.Get(id);
+            return View(contract);
         }
 
         [HttpPost]
@@ -75,8 +83,8 @@ namespace FourEstate.Web.Controllers
                 await _contractService.Update(dto);
                 return Ok(Results.EditSuccessResult());
             }
-            ViewData["customers"] = new SelectList(await _customerService.GetCustomerName(), "Id", "FullName");
-          //  ViewData["realEstates"] = new SelectList(await _realEstateService.GetRelEstateName(), "Id", "FullName");
+            ViewData["customer"] = new SelectList(await _customerService.GetCustomerName(), "Id", "FullName");
+            ViewData["realeste"] = new SelectList(await _realEstateService.GetRealEstateName(), "Id", "Name");
             return View(dto);
         }
 

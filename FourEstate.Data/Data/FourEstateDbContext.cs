@@ -14,6 +14,19 @@ namespace FourEstate.Data
         {
         }
 
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //   // base.OnModelCreating(builder);
+        //   // modelBuilder.Entity<Card>()
+        //   //.HasRequired(c => c.Stage)
+        //   //.WithMany()
+        //   //.WillCascadeOnDelete(false);
+
+        //   // modelBuilder.Entity<Side>()
+        //   //     .HasRequired(s => s.Stage)
+        //   //     .WithMany()
+        //   //     .WillCascadeOnDelete(false);
+        //}
         public DbSet<Customer> Customers { get; set; }
         public DbSet<RealEstate> RealEstates { get; set; }
         public DbSet<Contract> Contracts { get; set; }

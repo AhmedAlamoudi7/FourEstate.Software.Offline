@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FourEstate.infrastructure.Services.Dashbords;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,17 @@ namespace FourEstate.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IDashboardService _dashboardService;
 
-
-        public IActionResult Index()
+        public HomeController(IDashboardService dashboardService)
         {
-            return View();
+            _dashboardService = dashboardService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var data =await  _dashboardService.GetData();
+            return View(data);
         }
 
       

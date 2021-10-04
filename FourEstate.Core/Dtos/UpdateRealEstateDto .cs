@@ -23,12 +23,12 @@ namespace FourEstate.Core.Dtos
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الموقع")]
         public int LocationId { get; set; }
-        public UpdateLocationDto Location { get; set; }
+        //public UpdateLocationDto Location { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "التصنيف")]
         public int CategoryId { get; set; }
-        public UpdateCategoryDto Category { get; set; }
+        //public UpdateCategoryDto Category { get; set; }
 
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
