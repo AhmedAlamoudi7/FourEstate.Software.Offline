@@ -70,6 +70,75 @@ namespace FourEstate.infrastructure.Services.Dashbords
 
 
 
+        public async Task<List<PieChartViewModel>> GetRealEstateDataChart()
+        {
+
+            var chart = new List<PieChartViewModel>();
+            chart.Add(new PieChartViewModel()
+            {
+                Key = "department",
+                Value = await _db.RealEstates.CountAsync(x => !x.IsDelete && x.RealEstateType == Core.Enums.RealEstateType.department),
+                Color = "rgb(255, 99, 132)",
+            });
+            chart.Add(new PieChartViewModel()
+            {
+                Key = "Villa",
+                Value = await _db.RealEstates.CountAsync(x => !x.IsDelete && x.RealEstateType == Core.Enums.RealEstateType.Villa),
+                Color = "rgb(54, 162, 235)",
+            });
+            chart.Add(new PieChartViewModel()
+            {
+                Key = " ground",
+                Value = await _db.RealEstates.CountAsync(x => !x.IsDelete && x.RealEstateType == Core.Enums.RealEstateType.ground),
+                Color = "rgb(255, 206, 86)",
+            });
+
+            chart.Add(new PieChartViewModel()
+            {
+                Key = " house",
+                Value = await _db.RealEstates.CountAsync(x => !x.IsDelete && x.RealEstateType == Core.Enums.RealEstateType.house),
+                Color = "rgb(153, 102, 255)",
+
+            }); chart.Add(new PieChartViewModel()
+            {
+                Key = " Comapny",
+                Value = await _db.RealEstates.CountAsync(x => !x.IsDelete && x.RealEstateType == Core.Enums.RealEstateType.Comapny),
+                Color = "rgb(255, 159, 64)",
+            });
+
+            return chart;
+        }
+
+
+
+        public async Task<List<PieChartViewModel>> GetContractDataChart()
+        {
+
+            var chart = new List<PieChartViewModel>();
+            chart.Add(new PieChartViewModel()
+            {
+                Key = "rental",
+                Value = await _db.Contracts.CountAsync(x => !x.IsDelete && x.ContractType == Core.Enums.ContractType.rental),
+                Color = "rgb(255, 99, 132)",
+            });
+            chart.Add(new PieChartViewModel()
+            {
+                Key = "sale",
+                Value = await _db.Contracts.CountAsync(x => !x.IsDelete && x.ContractType == Core.Enums.ContractType.sale),
+                Color = "rgb(54, 162, 235)",
+            });
+            chart.Add(new PieChartViewModel()
+            {
+                Key = "buy",
+                Value = await _db.Contracts.CountAsync(x => !x.IsDelete && x.ContractType == Core.Enums.ContractType.buy),
+                Color = "rgb(255, 206, 86)",
+            });
+
+
+
+            return chart;
+        }
+
 
     }
 }

@@ -24,7 +24,24 @@ namespace FourEstate.Web.Controllers
             return View(data);
         }
 
-      
+        public async Task<IActionResult> GetUserChartData()
+        {
+            var data = await _dashboardService.GetUsersDataChart();
+            return Ok(data);
+        }
+
+        public async Task<IActionResult> GetContractCharData()
+        {
+            var data = await _dashboardService.GetContractDataChart();
+            return Ok(data);
+        }
+
+
+        public async Task<IActionResult> GetUserRealEstateData()
+        {
+            var data = await _dashboardService.GetRealEstateDataChart();
+            return Ok(data);
+        }
 
     }
 }

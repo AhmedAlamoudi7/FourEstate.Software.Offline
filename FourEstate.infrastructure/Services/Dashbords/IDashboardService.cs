@@ -11,5 +11,7 @@ namespace FourEstate.infrastructure.Services.Dashbords
     {
         Task<DashboardViewModel> GetData();
         Task<List<PieChartViewModel>> GetUsersDataChart();
+        Task<List<PieChartViewModel>> GetContractDataChart();
+        Task<List<PieChartViewModel>> GetRealEstateDataChart();
     }
 }
