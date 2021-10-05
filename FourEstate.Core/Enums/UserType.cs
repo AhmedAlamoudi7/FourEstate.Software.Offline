@@ -10,7 +10,9 @@ namespace FourEstate.Core.Enums
     {
         Administrator = 1,
         Customer = 2,
-        AdvertisementOwner = 4
+        AdvertisementOwner = 4,
+        Employee=5
+
     }
 
 }
