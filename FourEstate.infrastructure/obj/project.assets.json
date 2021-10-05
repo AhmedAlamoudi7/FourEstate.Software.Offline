@@ -6455,19 +6455,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\khatib\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin1\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\khatib\\Desktop\\ICT-Bridge-Asp\\FourEstate\\FourEstate\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
       "projectName": "FourEstate.infrastructure",
-      "projectPath": "C:\\Users\\khatib\\Desktop\\ICT-Bridge-Asp\\FourEstate\\FourEstate\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
-      "packagesPath": "C:\\Users\\khatib\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\khatib\\Desktop\\ICT-Bridge-Asp\\FourEstate\\FourEstate\\FourEstate.infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
+      "packagesPath": "C:\\Users\\Admin1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\khatib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6475,14 +6475,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://www.nuget.org/api/v2": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\khatib\\Desktop\\ICT-Bridge-Asp\\FourEstate\\FourEstate\\FourEstate.Data\\FourEstate.Data.csproj": {
-              "projectPath": "C:\\Users\\khatib\\Desktop\\ICT-Bridge-Asp\\FourEstate\\FourEstate\\FourEstate.Data\\FourEstate.Data.csproj"
+            "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj": {
+              "projectPath": "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj"
             }
           }
         }
@@ -6540,7 +6540,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "bKh9BrTVv00sQmNTHJVQo7eJOQ0/nKwR8ZBAdSmv66MdW0yxnuzPVKVQ+VhHKALxmgsYK6UbIG7S9XD77hKgDg==",
+  "dgSpecHash": "XOo4+15vMVKJ6qNFfDnDrzcfNIiendOb3l/hdNaBEqct+M22TRxW97C0/K5wVSLYBkYpEIivq1Wcf69KX6IFaw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\khatib\\Desktop\\ICT-Bridge-Asp\\FourEstate\\FourEstate\\FourEstate.Core\\FourEstate.Core.csproj",
+  "projectFilePath": "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\khatib\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.10\\microsoft.aspnetcore.http.features.5.0.10.nupkg.sha512",
-    "C:\\Users\\khatib\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
-    "C:\\Users\\khatib\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
+    "C:\\Users\\Admin1\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.10\\microsoft.aspnetcore.http.features.5.0.10.nupkg.sha512",
+    "C:\\Users\\Admin1\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Admin1\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
   ],
   "logs": []
 }
