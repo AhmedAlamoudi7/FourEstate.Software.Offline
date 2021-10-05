@@ -27,8 +27,7 @@ namespace FourEstate.Data.Models
         public Category Category { get; set; }
 
 
-        //   public List<Image> Images { get; set; }
-        public string ImageUrl { get; set; }
+        public List<RealEstatetAttachment> Attachments { get; set; }
 
         public List<Contract> Contracts{ get; set; }
 

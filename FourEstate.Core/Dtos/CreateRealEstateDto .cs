@@ -30,7 +30,7 @@ namespace FourEstate.Core.Dtos
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "الصور")]
-        public IFormFile ImageUrl { get; set; }
+        public List<IFormFile> Attachments { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "نوع العقار")]

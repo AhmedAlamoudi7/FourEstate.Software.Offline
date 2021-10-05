@@ -37,9 +37,9 @@ namespace FourEstate.Infrastructure.AutoMapper
            
             
             CreateMap<RealEstate, RealEstateViewModel>();
-            CreateMap<CreateRealEstateDto, RealEstate>().ForMember(x => x.ImageUrl, x => x.Ignore());
-            CreateMap<UpdateRealEstateDto, RealEstate>().ForMember(x => x.ImageUrl, x => x.Ignore());
-            CreateMap<RealEstate, UpdateRealEstateDto>().ForMember(x => x.ImageUrl, x => x.Ignore());
+            CreateMap<CreateRealEstateDto, RealEstate>().ForMember(x => x.Attachments, x => x.Ignore());
+            CreateMap<UpdateRealEstateDto, RealEstate>().ForMember(x => x.Attachments, x => x.Ignore());
+            CreateMap<RealEstate, UpdateRealEstateDto>().ForMember(x => x.Attachments, x => x.Ignore());
 
 
 

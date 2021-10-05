@@ -89,13 +89,21 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
         public async Task<int> Create(CreateRealEstateDto dto)
         {
             var realEstates = _mapper.Map<RealEstate>(dto);
-            if (dto.ImageUrl != null)
-            {
-                realEstates.ImageUrl = await _fileService.SaveFile(dto.ImageUrl, "Images");
-            }
-
             await _db.RealEstates.AddAsync(realEstates);
             await _db.SaveChangesAsync();
+
+
+            if (dto.Attachments != null)
+            {
+                foreach (var a in dto.Attachments)
+                {
+                    var realEstatesAttachment = new RealEstatetAttachment();
+                    realEstatesAttachment.AttachmentUrl = await _fileService.SaveFile(a, "Images");
+                    realEstatesAttachment.RealEstateId = realEstates.Id;
+                    await _db.RealEstatetAttachments.AddAsync(realEstatesAttachment);
+                    await _db.SaveChangesAsync();
+                }
+            }
             return realEstates.Id;
         }
 
@@ -111,9 +119,16 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
 
             var updatedrealEstates = _mapper.Map(dto, realEstates);
 
-            if (dto.ImageUrl != null)
+            if (dto.Attachments != null)
             {
-                updatedrealEstates.ImageUrl = await _fileService.SaveFile(dto.ImageUrl, "Images");
+                foreach (var a in dto.Attachments)
+                {
+                    var realEstatesAttachment = new RealEstatetAttachment();
+                    realEstatesAttachment.AttachmentUrl = await _fileService.SaveFile(a, "Images");
+                    realEstatesAttachment.RealEstateId = realEstates.Id;
+                    await _db.RealEstatetAttachments.AddAsync(realEstatesAttachment);
+                    await _db.SaveChangesAsync();
+                }
             }
 
             _db.RealEstates.Update(updatedrealEstates);

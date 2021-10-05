@@ -4,14 +4,16 @@ using FourEstate.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FourEstate.Data.Migrations
 {
     [DbContext(typeof(FourEstateDbContext))]
-    partial class FourEstateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211005003109_RealEstateAttachment_Model")]
+    partial class RealEstateAttachment_Model
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

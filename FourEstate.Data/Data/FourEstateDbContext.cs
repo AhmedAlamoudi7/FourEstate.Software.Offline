@@ -30,7 +30,7 @@ namespace FourEstate.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<RealEstate> RealEstates { get; set; }
         public DbSet<Contract> Contracts { get; set; }
-        public DbSet<Image> Images { get; set; }
+        public DbSet<RealEstatetAttachment> RealEstatetAttachments { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Advertisement> Advertisements { get; set; }

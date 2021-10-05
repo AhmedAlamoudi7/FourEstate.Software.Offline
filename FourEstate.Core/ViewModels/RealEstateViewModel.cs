@@ -19,5 +19,7 @@ namespace FourEstate.Core.ViewModels
         public LocationViewModel Location { get; set; }
 
         public CategoryViewModel Category { get; set; }
+        public List<RealEstateAttachmentViewModel> Attachments { get; set; }
+
     }
 }
