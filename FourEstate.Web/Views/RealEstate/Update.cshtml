@@ -5,9 +5,9 @@
     Layout = null;
 }
 
-<form asp-action="Update" class="ajaxForm" tname="#kt_datatable">
+<form asp-action="Update" class="ajaxForm" tname="#kt_datatable" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />>
+    <input type="hidden" asp-for="Id" />
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
