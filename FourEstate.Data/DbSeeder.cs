@@ -364,7 +364,7 @@ namespace FourEstate.Data
             var contracts = new List<Contract>();
 
             var contract = new Contract();
-            contract.RealEstateId = 2;
+            contract.RealEstateId = 1;
             contract.Price = 4444;
             contract.CustomerId = 1;
             contract.ContractType = Core.Enums.ContractType.sale;
@@ -372,7 +372,7 @@ namespace FourEstate.Data
             contract.IsDelete = false;
 
             var contract2 = new Contract();
-            contract2.RealEstateId = 3;
+            contract2.RealEstateId = 2;
             contract2.Price = 444432;
             contract2.CustomerId = 2;
             contract2.ContractType = Core.Enums.ContractType.rental;
@@ -380,7 +380,7 @@ namespace FourEstate.Data
             contract2.IsDelete = false;
 
             var contract3 = new Contract();
-            contract3.RealEstateId = 4;
+            contract3.RealEstateId = 3;
             contract3.Price = 44141;
             contract3.CustomerId = 3;
             contract3.ContractType = Core.Enums.ContractType.buy;
@@ -388,7 +388,7 @@ namespace FourEstate.Data
             contract3.IsDelete = false;
 
             var contract4 = new Contract();
-            contract4.RealEstateId = 5;
+            contract4.RealEstateId = 4;
             contract4.Price = 4314;
             contract4.CustomerId = 4;
             contract4.ContractType = Core.Enums.ContractType.sale;
