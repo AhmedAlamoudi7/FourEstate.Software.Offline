@@ -220,7 +220,7 @@ namespace FourEstate.Data
             var customer2 = new Customer();
             customer2.FirstName = "هند";
             customer2.LastName = "مكي";
-            customer2.FullName = $"{customer.FirstName}  {customer.LastName}";
+            customer2.FullName = $"{customer2.FirstName}  {customer2.LastName}";
             customer2.DOB = DateTime.Now;
             customer2.ImageUrl = "";
             customer.Phone = "31241242";
@@ -231,7 +231,7 @@ namespace FourEstate.Data
             var customer3 = new Customer();
             customer3.FirstName = "روان";
             customer3.LastName = "بكر";
-            customer3.FullName = $"{customer.FirstName}  {customer.LastName}";
+            customer3.FullName = $"{customer3.FirstName}  {customer3.LastName}";
             customer3.DOB = DateTime.Now;
             customer3.ImageUrl = "";
             customer3.Phone = "132424";
@@ -242,7 +242,7 @@ namespace FourEstate.Data
             var customer4 = new Customer();
             customer4.FirstName = "حازم";
             customer4.LastName = "سرداح";
-            customer4.FullName = $"{customer.FirstName}  {customer.LastName}";
+            customer4.FullName = $"{customer4.FirstName}  {customer4.LastName}";
             customer4.DOB = DateTime.Now;
             customer4.ImageUrl = "";
             customer4.Phone = "12312";
