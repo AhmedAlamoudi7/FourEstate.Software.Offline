@@ -46,3 +46,27 @@ C:\Users\khatib\Desktop\ICT-Bridge-Asp\GitHubProjects\FourEstate.Software\FourEs
 C:\Users\khatib\Desktop\ICT-Bridge-Asp\GitHubProjects\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.dll
 C:\Users\khatib\Desktop\ICT-Bridge-Asp\GitHubProjects\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\ref\FourEstate.Core.dll
 C:\Users\khatib\Desktop\ICT-Bridge-Asp\GitHubProjects\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.pdb
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\FourEstate.Core.deps.json
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\FourEstate.Core.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\ref\FourEstate.Core.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\FourEstate.Core.pdb
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.csproj.AssemblyReference.cache
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.AssemblyInfoInputs.cache
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.AssemblyInfo.cs
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.csproj.CoreCompileInputs.cache
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\ref\FourEstate.Core.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.pdb
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\FourEstate.Core.deps.json
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\FourEstate.Core.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\ref\FourEstate.Core.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\FourEstate.Core.pdb
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.csproj.AssemblyReference.cache
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.AssemblyInfoInputs.cache
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.AssemblyInfo.cs
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.csproj.CoreCompileInputs.cache
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\ref\FourEstate.Core.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.pdb

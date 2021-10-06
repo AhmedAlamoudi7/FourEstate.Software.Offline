@@ -54,7 +54,8 @@ namespace FourEstate.Web
                 config.Password.RequireUppercase = false;
                 config.SignIn.RequireConfirmedEmail = false;
             }).AddEntityFrameworkStores<FourEstateDbContext>()
-                        .AddDefaultTokenProviders();
+                        .AddDefaultTokenProviders().AddDefaultUI();
+
             services.AddAutoMapper(typeof(MapperProfile).Assembly);
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IFileService, FileService>();

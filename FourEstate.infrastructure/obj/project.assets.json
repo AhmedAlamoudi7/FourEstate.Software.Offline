@@ -314,16 +314,30 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.FileProviders.Abstractions/2.2.0": {
+      "Microsoft.Extensions.FileProviders.Abstractions/5.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "2.2.0"
+          "Microsoft.Extensions.Primitives": "5.0.0"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Hosting.Abstractions/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
+          "Microsoft.Extensions.FileProviders.Abstractions": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.Identity.Core/5.0.10": {
@@ -1748,7 +1762,8 @@
         "dependencies": {
           "FourEstate.Core": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.10",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.10"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.10",
+          "Microsoft.Extensions.Hosting.Abstractions": "5.0.0"
         },
         "compile": {
           "bin/placeholder/FourEstate.Data.dll": {}
@@ -2226,17 +2241,46 @@
         "version.txt"
       ]
     },
-    "Microsoft.Extensions.FileProviders.Abstractions/2.2.0": {
-      "sha512": "EcnaSsPTqx2MGnHrmWOD0ugbuuqVT8iICqSqPzi45V5/MA1LjUNb0kwgcxBGqizV1R+WeBK7/Gw25Jzkyk9bIw==",
+    "Microsoft.Extensions.FileProviders.Abstractions/5.0.0": {
+      "sha512": "iuZIiZ3mteEb+nsUqpGXKx2cGF+cv6gWPd5jqQI4hzqdiJ6I94ddLjKhQOuRW1lueHwocIw30xbSHGhQj0zjdQ==",
       "type": "package",
-      "path": "microsoft.extensions.fileproviders.abstractions/2.2.0",
+      "path": "microsoft.extensions.fileproviders.abstractions/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.FileProviders.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
-        "microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
-        "microsoft.extensions.fileproviders.abstractions.nuspec"
+        "microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
+        "microsoft.extensions.fileproviders.abstractions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.Hosting.Abstractions/5.0.0": {
+      "sha512": "cbUOCePYBl1UhM+N2zmDSUyJ6cODulbtUd9gEzMFIK3RQDtP/gJsE08oLcBSXH3Q1RAQ0ex7OAB3HeTKB9bXpg==",
+      "type": "package",
+      "path": "microsoft.extensions.hosting.abstractions/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Hosting.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.Hosting.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.xml",
+        "microsoft.extensions.hosting.abstractions.5.0.0.nupkg.sha512",
+        "microsoft.extensions.hosting.abstractions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "Microsoft.Extensions.Identity.Core/5.0.10": {
@@ -6455,19 +6499,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin1\\.nuget\\packages\\": {}
+    "C:\\Users\\khatib\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
       "projectName": "FourEstate.infrastructure",
-      "projectPath": "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
-      "packagesPath": "C:\\Users\\Admin1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
+      "packagesPath": "C:\\Users\\khatib\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\khatib\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6475,14 +6519,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj": {
-              "projectPath": "C:\\Users\\Admin1\\Source\\Repos\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj"
+            "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj": {
+              "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj"
             }
           }
         }
@@ -6540,7 +6584,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   }

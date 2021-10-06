@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FourEstate.Web.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomerController : BaseController
     {
 
         private readonly ICustomerService _customerService;

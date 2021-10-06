@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FourEstate.Data
 {
@@ -29,6 +30,12 @@ namespace FourEstate.Data
         //}
         public DbSet<Customer> Customers { get; set; }
         public DbSet<RealEstate> RealEstates { get; set; }
+
+        internal Task CreateAsync(User user, string v)
+        {
+            throw new NotImplementedException();
+        }
+
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<RealEstatetAttachment> RealEstatetAttachments { get; set; }
         public DbSet<Category> Categories { get; set; }

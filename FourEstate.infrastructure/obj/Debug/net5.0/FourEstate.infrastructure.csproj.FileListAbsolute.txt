@@ -66,3 +66,37 @@ C:\Users\khatib\Desktop\ICT-Bridge-Asp\GitHubProjects\FourEstate.Software\FourEs
 C:\Users\khatib\Desktop\ICT-Bridge-Asp\GitHubProjects\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.dll
 C:\Users\khatib\Desktop\ICT-Bridge-Asp\GitHubProjects\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\ref\FourEstate.infrastructure.dll
 C:\Users\khatib\Desktop\ICT-Bridge-Asp\GitHubProjects\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.pdb
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.infrastructure.deps.json
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.infrastructure.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\ref\FourEstate.infrastructure.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.infrastructure.pdb
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.Core.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.Data.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.Data.pdb
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.Core.pdb
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.csproj.AssemblyReference.cache
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.AssemblyInfoInputs.cache
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.AssemblyInfo.cs
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.csproj.CopyComplete
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\ref\FourEstate.infrastructure.dll
+C:\Users\Hazem_KH\Desktop\New folder (9)\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.pdb
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.infrastructure.deps.json
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.infrastructure.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\ref\FourEstate.infrastructure.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.infrastructure.pdb
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.Core.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.Data.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.Data.pdb
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\bin\Debug\net5.0\FourEstate.Core.pdb
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.csproj.AssemblyReference.cache
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.AssemblyInfoInputs.cache
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.AssemblyInfo.cs
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.csproj.CopyComplete
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\ref\FourEstate.infrastructure.dll
+C:\Users\khatib\Desktop\FourEstate\AhmedAlamoudi7\FourEstate.Software\FourEstate.infrastructure\obj\Debug\net5.0\FourEstate.infrastructure.pdb

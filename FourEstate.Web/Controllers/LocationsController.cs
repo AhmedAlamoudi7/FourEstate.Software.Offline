@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FourEstate.Web.Controllers
 {
-    public class LocationsController : Controller
+    public class LocationsController : BaseController
     {
 
         private readonly ILocationService _locationService;

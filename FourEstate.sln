@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourEstate.Web", "FourEstate.Web\FourEstate.Web.csproj", "{B1FFB7C0-25D6-45C4-BFBA-48E002FD1EF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FourEstate.Web", "FourEstate.Web\FourEstate.Web.csproj", "{B1FFB7C0-25D6-45C4-BFBA-48E002FD1EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourEstate.Core", "FourEstate.Core\FourEstate.Core.csproj", "{F381317A-CAAC-43C6-B986-BF6585D29E69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FourEstate.Core", "FourEstate.Core\FourEstate.Core.csproj", "{F381317A-CAAC-43C6-B986-BF6585D29E69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourEstate.infrastructure", "FourEstate.infrastructure\FourEstate.infrastructure.csproj", "{485DF7E3-CF57-45C6-9952-A7DACCAA134B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FourEstate.infrastructure", "FourEstate.infrastructure\FourEstate.infrastructure.csproj", "{485DF7E3-CF57-45C6-9952-A7DACCAA134B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourEstate.Data", "FourEstate.Data\FourEstate.Data.csproj", "{3F637381-D22C-4397-ABF4-2CD1140393B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FourEstate.Data", "FourEstate.Data\FourEstate.Data.csproj", "{3F637381-D22C-4397-ABF4-2CD1140393B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

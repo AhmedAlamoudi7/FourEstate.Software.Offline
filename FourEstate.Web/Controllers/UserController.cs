@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FourEstate.Web.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
 
         private readonly IUserService _userService;

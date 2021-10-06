@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FourEstate.Web.Controllers
 {
-    public class ContractController : Controller
+    public class ContractController : BaseController
     {
         private readonly IContractService _contractService;
         private readonly ICustomerService _customerService;
