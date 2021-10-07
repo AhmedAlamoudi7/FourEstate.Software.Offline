@@ -55,6 +55,9 @@ namespace FourEstate.Infrastructure.AutoMapper
             CreateMap<Contract, UpdateContractDto>();
 
 
+
+            CreateMap<ContentChangeLog, ContentChangeLogViewModel>();
+
         }
     }
 }

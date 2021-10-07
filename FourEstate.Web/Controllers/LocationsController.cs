@@ -1,5 +1,6 @@
 ﻿using FourEstate.Core.Constants;
 using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.Infrastructure.Services.Categories;
 using FourEstate.Infrastructure.Services.LocationsService;
 using FourEstate.Infrastructure.Services.Users;
@@ -26,6 +27,17 @@ namespace FourEstate.Web.Controllers
         {
             return View();
         }
+
+
+
+        public async Task<IActionResult> GetLog(int Id)
+        {
+            var logs = await _locationService.GetLog(Id);
+            return View(logs);
+        }
+
+
+
 
         public async Task<JsonResult> GetLocationData(Pagination pagination,Query query)
         {
@@ -75,5 +87,11 @@ namespace FourEstate.Web.Controllers
             return Ok(Results.DeleteSuccessResult());
         }
 
+        [HttpGet]
+        public async Task<IActionResult> UpdateStatus(int id, ContentStatus status)
+        {
+            await _locationService.UpdateStatus(id, status);
+            return Ok(Results.UpdateStatusResult());
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace FourEstate.Infrastructure.Services.Advertisements
 
         Task<UpdateAdvertisementDto> Get(int id);
         Task<int> Update(UpdateAdvertisementDto dto);
+        Task<int> UpdateStatus(int id, ContentStatus status);
+        Task<List<ContentChangeLogViewModel>> GetLog(int id);
 
     }
 }

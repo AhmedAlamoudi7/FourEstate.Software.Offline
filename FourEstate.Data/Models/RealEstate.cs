@@ -32,6 +32,8 @@ namespace FourEstate.Data.Models
 
         public List<Contract> Contracts{ get; set; }
 
+
+
         public RealEstate()
         {
             Stauts = ContentStatus.Pending;

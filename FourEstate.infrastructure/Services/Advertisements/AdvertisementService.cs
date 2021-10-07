@@ -61,6 +61,20 @@ namespace FourEstate.Infrastructure.Services.Advertisements
             return result;
         }
 
+
+
+        public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
+        {
+            var changes = await _db.ContentChangeLogs.Where(x => x.ContentId == id && x.Type == ContentType.Advertisment).ToListAsync();
+            return _mapper.Map<List<ContentChangeLogViewModel>>(changes);
+        }
+
+
+
+
+
+
+
         public async Task<int> Delete(int id)
         {
             var advertisement = await _db.Advertisements.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
@@ -144,6 +158,36 @@ namespace FourEstate.Infrastructure.Services.Advertisements
 
              _db.Advertisements.Update(updatedAdvertisement);
              await _db.SaveChangesAsync();
+
+            return advertisement.Id;
+        }
+
+
+
+        public async Task<int> UpdateStatus(int id, ContentStatus status)
+        {
+            var advertisement = await _db.Advertisements.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+            if (advertisement == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
+
+            var changeLog = new ContentChangeLog();
+            changeLog.ContentId = advertisement.Id;
+            changeLog.Type = ContentType.Advertisment;
+            changeLog.Old = advertisement.Stauts;
+            changeLog.New = status;
+            changeLog.ChangeAt = DateTime.Now;
+
+            await _db.ContentChangeLogs.AddAsync(changeLog);
+            await _db.SaveChangesAsync();
+
+            advertisement.Stauts = status;
+            _db.Advertisements.Update(advertisement);
+            await _db.SaveChangesAsync();
+
+            //await _emailService.Send(post.Author.Email, "UPDATE POST STATUS !", $"YOUR POST NOW IS {status.ToString()}");
 
             return advertisement.Id;
         }

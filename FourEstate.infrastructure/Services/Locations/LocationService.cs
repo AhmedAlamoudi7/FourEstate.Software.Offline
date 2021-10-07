@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.Core.Exceptions;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
@@ -48,6 +49,15 @@ namespace FourEstate.Infrastructure.Services.LocationsService
             return result;
         }
 
+
+        public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
+        {
+            var changes = await _db.ContentChangeLogs.Where(x => x.ContentId == id && x.Type == ContentType.Location).ToListAsync();
+            return _mapper.Map<List<ContentChangeLogViewModel>>(changes);
+        }
+
+
+
         public async Task<List<LocationViewModel>> GetLocationCountry()
         {
             var location = await _db.Locations.Where(x => !x.IsDelete).ToListAsync();
@@ -70,7 +80,8 @@ namespace FourEstate.Infrastructure.Services.LocationsService
                 throw new EntityNotFoundException();
             }
             var updatedLocation = _mapper.Map<UpdateLocationDto, Location>(dto, location);
-          
+
+
             _db.Locations.Update(updatedLocation);
             await _db.SaveChangesAsync();
             return updatedLocation.Id;
@@ -99,6 +110,33 @@ namespace FourEstate.Infrastructure.Services.LocationsService
             return location.Id;
         }
 
+        public async Task<int> UpdateStatus(int id, ContentStatus status)
+        {
+            var location = await _db.Locations.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+            if (location == null)
+            {
+                throw new EntityNotFoundException();
+            }
 
-    }
+            var changeLog = new ContentChangeLog();
+            changeLog.ContentId = location.Id;
+            changeLog.Type = ContentType.Location;
+            changeLog.Old = location.Stauts;
+            changeLog.New = status;
+            changeLog.ChangeAt = DateTime.Now;
+
+            await _db.ContentChangeLogs.AddAsync(changeLog);
+            await _db.SaveChangesAsync();
+
+            location.Stauts = status;
+            _db.Locations.Update(location);
+            await _db.SaveChangesAsync();
+
+            //await _emailService.Send(post.Author.Email, "UPDATE POST STATUS !", $"YOUR POST NOW IS {status.ToString()}");
+
+            return location.Id;
+        }
+
+
+        }
 }

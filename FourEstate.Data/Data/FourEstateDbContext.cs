@@ -14,33 +14,15 @@ namespace FourEstate.Data
             : base(options)
         {
         }
-
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-        //   // base.OnModelCreating(builder);
-        //   // modelBuilder.Entity<Card>()
-        //   //.HasRequired(c => c.Stage)
-        //   //.WithMany()
-        //   //.WillCascadeOnDelete(false);
-
-        //   // modelBuilder.Entity<Side>()
-        //   //     .HasRequired(s => s.Stage)
-        //   //     .WithMany()
-        //   //     .WillCascadeOnDelete(false);
-        //}
         public DbSet<Customer> Customers { get; set; }
         public DbSet<RealEstate> RealEstates { get; set; }
-
-        internal Task CreateAsync(User user, string v)
-        {
-            throw new NotImplementedException();
-        }
-
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<RealEstatetAttachment> RealEstatetAttachments { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Advertisement> Advertisements { get; set; }
+        public DbSet<ContentChangeLog> ContentChangeLogs { get; set; }
+
 
 
     }

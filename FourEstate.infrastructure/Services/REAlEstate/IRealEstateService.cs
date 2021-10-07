@@ -1,4 +1,5 @@
 ﻿using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,9 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
         Task<int> Create(CreateRealEstateDto dto);
         Task<int> Update(UpdateRealEstateDto dto);
         Task<List<RealEstateViewModel>> GetRealEstateName();
+        Task<int> UpdateStatus(int id, ContentStatus status);
+        Task<List<ContentChangeLogViewModel>> GetLog(int id);
+
 
     }
 }

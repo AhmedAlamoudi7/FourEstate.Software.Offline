@@ -108,6 +108,33 @@ namespace FourEstate.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("FourEstate.Data.Models.ContentChangeLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ChangeAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ContentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("New")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Old")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContentChangeLogs");
+                });
+
             modelBuilder.Entity("FourEstate.Data.Models.Contract", b =>
                 {
                     b.Property<int>("Id")

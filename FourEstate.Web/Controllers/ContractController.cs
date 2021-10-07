@@ -1,5 +1,6 @@
 ﻿using FourEstate.Core.Constants;
 using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.infrastructure.Services.ContractSS;
 using FourEstate.Infrastructure.Services.Customers;
 using FourEstate.Infrastructure.Services.REAlEstate;
@@ -29,6 +30,13 @@ namespace FourEstate.Web.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+
+        public async Task<IActionResult> GetLog(int Id)
+        {
+            var logs = await _contractService.GetLog(Id);
+            return View(logs);
         }
 
 
@@ -96,5 +104,12 @@ namespace FourEstate.Web.Controllers
             return Ok(Results.DeleteSuccessResult());
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateStatus(int id, ContentStatus status)
+        {
+            await _contractService.UpdateStatus(id, status);
+            return Ok(Results.UpdateStatusResult());
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.Core.Exceptions;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
@@ -49,6 +50,17 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
             };
             return result;
         }
+
+
+
+
+        public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
+        {
+            var changes = await _db.ContentChangeLogs.Where(x => x.ContentId == id && x.Type == ContentType.RealEstate).ToListAsync();
+            return _mapper.Map<List<ContentChangeLogViewModel>>(changes);
+        }
+
+
 
 
         public async Task<List<RealEstateViewModel>> GetRealEstateName()
@@ -137,6 +149,32 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
             return realEstates.Id;
         }
 
+        public async Task<int> UpdateStatus(int id, ContentStatus status)
+        {
+            var realEstate = await _db.RealEstates.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+            if (realEstate == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
+            var changeLog = new ContentChangeLog();
+            changeLog.ContentId = realEstate.Id;
+            changeLog.Type = ContentType.RealEstate;
+            changeLog.Old = realEstate.Stauts;
+            changeLog.New = status;
+            changeLog.ChangeAt = DateTime.Now;
+
+            await _db.ContentChangeLogs.AddAsync(changeLog);
+            await _db.SaveChangesAsync();
+
+            realEstate.Stauts = status;
+            _db.RealEstates.Update(realEstate);
+            await _db.SaveChangesAsync();
+
+            //await _emailService.Send(post.Author.Email, "UPDATE POST STATUS !", $"YOUR POST NOW IS {status.ToString()}");
+
+            return realEstate.Id;
+        }
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using FourEstate.Core.Constants;
 using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.Infrastructure.Services.Advertisements;
 using FourEstate.Infrastructure.Services.Categories;
 using FourEstate.Infrastructure.Services.Users;
@@ -33,6 +34,17 @@ namespace FourEstate.Web.Controllers
             var result = await _advertisementService.GetAll(pagination, query);
             return  Json(result);
         }
+
+
+
+        public async Task<IActionResult> GetLog(int Id)
+        {
+            var logs = await _advertisementService.GetLog(Id);
+            return View(logs);
+        }
+
+
+
 
 
         [HttpGet]
@@ -85,6 +97,11 @@ namespace FourEstate.Web.Controllers
             await _advertisementService.Delete(id);
             return Ok(Results.DeleteSuccessResult());
         }
-
+        [HttpGet]
+        public async Task<IActionResult> UpdateStatus(int id,ContentStatus status)
+        {
+            await _advertisementService.UpdateStatus(id, status);
+            return Ok(Results.UpdateStatusResult());
+        }
     }
 }

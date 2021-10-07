@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.Core.Exceptions;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
@@ -52,6 +53,15 @@ namespace FourEstate.infrastructure.Services.ContractSS
             };
             return result;
         }
+
+
+
+        public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
+        {
+            var changes = await _db.ContentChangeLogs.Where(x => x.ContentId == id && x.Type == ContentType.Contract).ToListAsync();
+            return _mapper.Map<List<ContentChangeLogViewModel>>(changes);
+        }
+
 
 
         public async Task<List<ContractViewModel>> GetContractName()
@@ -108,6 +118,38 @@ namespace FourEstate.infrastructure.Services.ContractSS
             await _db.SaveChangesAsync();
             return contract.Id;
         }
+
+
+
+
+        public async Task<int> UpdateStatus(int id, ContentStatus status)
+        {
+            var contract = await _db.Contracts.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+            if (contract == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
+            var changeLog = new ContentChangeLog();
+            changeLog.ContentId = contract.Id;
+            changeLog.Type = ContentType.Contract;
+            changeLog.Old = contract.Stauts;
+            changeLog.New = status;
+            changeLog.ChangeAt = DateTime.Now;
+
+            await _db.ContentChangeLogs.AddAsync(changeLog);
+            await _db.SaveChangesAsync();
+
+
+            contract.Stauts = status;
+            _db.Contracts.Update(contract);
+            await _db.SaveChangesAsync();
+
+            //await _emailService.Send(post.Author.Email, "UPDATE POST STATUS !", $"YOUR POST NOW IS {status.ToString()}");
+
+            return contract.Id;
+        }
+
 
 
     }

@@ -1147,3 +1147,7 @@ C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\Four
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\ref\FourEstate.Web.dll
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\FourEstate.Web.pdb
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\FourEstate.Web.genruntimeconfig.cache
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\RealEstate\GetLog.cshtml.g.cs
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Advertisement\GetLog.cshtml.g.cs
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Contract\GetLog.cshtml.g.cs
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Locations\GetLog.cshtml.g.cs

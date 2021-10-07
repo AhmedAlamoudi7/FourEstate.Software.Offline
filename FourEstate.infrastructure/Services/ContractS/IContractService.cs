@@ -1,4 +1,5 @@
 ﻿using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,8 @@ namespace FourEstate.infrastructure.Services.ContractSS
         Task<int> Update(UpdateContractDto dto);
         Task<int> Create(CreateContractDto dto);
         Task<List<ContractViewModel>> GetContractName();
+        Task<int> UpdateStatus(int id, ContentStatus status);
+        Task<List<ContentChangeLogViewModel>> GetLog(int id);
+
     }
 }
