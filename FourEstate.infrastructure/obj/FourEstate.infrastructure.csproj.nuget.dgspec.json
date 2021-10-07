@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj": {}
+    "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj": {
+    "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj",
+        "projectUniqueName": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj",
         "projectName": "FourEstate.Core",
-        "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj",
+        "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj",
         "packagesPath": "C:\\Users\\khatib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\obj\\",
+        "outputPath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\khatib\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -64,14 +64,14 @@
         }
       }
     },
-    "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj": {
+    "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj",
+        "projectUniqueName": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj",
         "projectName": "FourEstate.Data",
-        "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj",
+        "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj",
         "packagesPath": "C:\\Users\\khatib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\obj\\",
+        "outputPath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\khatib\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -88,8 +88,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj": {
-                "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj"
+              "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj": {
+                "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj"
               }
             }
           }
@@ -148,14 +148,14 @@
         }
       }
     },
-    "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj": {
+    "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
         "projectName": "FourEstate.infrastructure",
-        "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
+        "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\FourEstate.infrastructure.csproj",
         "packagesPath": "C:\\Users\\khatib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\khatib\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -172,8 +172,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj": {
-                "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj"
+              "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj": {
+                "projectPath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Data\\FourEstate.Data.csproj"
               }
             }
           }

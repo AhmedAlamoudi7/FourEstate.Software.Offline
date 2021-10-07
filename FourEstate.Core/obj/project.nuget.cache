@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X9nEPlJDuO1agW9zizMji90rylHNBomF0ovJG01CLRKkE7/CxeWHdb50D1qEd1FTBwNBM0fMqfgMp88+IQvHvA==",
+  "dgSpecHash": "kPS0vwxOFg0ulGvSELiRWxPBpgtQygmK3AkT/VvulT3cYXfev4Kz+BJWEtyfFLaEM1pnB6LEyP0vFZ2Nh/lkHw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\khatib\\Desktop\\FourEstate\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj",
+  "projectFilePath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khatib\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.10\\microsoft.aspnetcore.http.features.5.0.10.nupkg.sha512",
     "C:\\Users\\khatib\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
