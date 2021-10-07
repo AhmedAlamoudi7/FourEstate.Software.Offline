@@ -57,16 +57,16 @@ namespace FourEstate.Web
                         .AddDefaultTokenProviders().AddDefaultUI();
 
             services.AddAutoMapper(typeof(MapperProfile).Assembly);
-            services.AddTransient<IEmailService, EmailService>();
-            services.AddTransient<IFileService, FileService>();
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<ICategoryService, CategoryService>();
-            services.AddTransient<ILocationService, LocationService>();
-            services.AddTransient<ICustomerService, CustomerService>();
-            services.AddTransient<IAdvertisementService, AdvertisementService>();
-           services.AddTransient<IContractService, ContractService>();
-            services.AddTransient<IRealEstateService, RealEstateService>();
-            services.AddTransient<IDashboardService, DashboardService>();
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddSingleton<IFileService, FileService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IAdvertisementService, AdvertisementService>();
+            services.AddScoped<IContractService, ContractService>();
+            services.AddScoped<IRealEstateService, RealEstateService>();
+            services.AddScoped<IDashboardService, DashboardService>();
 
 
 
