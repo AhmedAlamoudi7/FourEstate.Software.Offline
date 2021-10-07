@@ -44,12 +44,12 @@ var KTDatatableAutoColumnHideDemo = function () {
             },{
                     field: 'country',
                     title: 'الدولة ',
-                    width: '150'
+                    width: '100'
                 },
                 {
                     field: 'city',
                     title: 'المدينة ',
-                    width: '150'
+                    width: '100'
                 },
                 {
                     field: 'street',
@@ -60,6 +60,11 @@ var KTDatatableAutoColumnHideDemo = function () {
                     field: 'streetNumber',
                     title: 'رقم الشارع ',
                     width: '100'
+                },
+                {
+                   field: 'status',
+                   title: 'الحالة ',
+                   width: '100'
                 },
             {
                 field: 'Actions',

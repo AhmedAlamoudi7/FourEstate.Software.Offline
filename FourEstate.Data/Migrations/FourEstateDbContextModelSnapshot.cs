@@ -51,6 +51,9 @@ namespace FourEstate.Data.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Stauts")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -131,6 +134,9 @@ namespace FourEstate.Data.Migrations
                         .HasColumnType("float");
 
                     b.Property<int>("RealEstateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stauts")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -220,6 +226,9 @@ namespace FourEstate.Data.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Stauts")
+                        .HasColumnType("int");
+
                     b.Property<string>("Street")
                         .HasColumnType("nvarchar(max)");
 
@@ -267,6 +276,9 @@ namespace FourEstate.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RealEstateType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stauts")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")

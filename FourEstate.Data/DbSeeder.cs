@@ -1,4 +1,5 @@
-﻿using FourEstate.Data.Models;
+﻿using FourEstate.Core.Enums;
+using FourEstate.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,7 +22,9 @@ namespace FourEstate.Data
                 {
 
                     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+                    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                     userManager.SeedUser().Wait();
+                    roleManager.SeedRoles().Wait();
 
                     var context = scope.ServiceProvider.GetRequiredService<FourEstateDbContext>();
                     context.SeedLocation().Wait();
@@ -58,7 +61,7 @@ namespace FourEstate.Data
                 PhoneNumber = "0595555555",
                 DOB = DateTime.Now,
                 CreatedAt = DateTime.Now,
-                UserType = Core.Enums.UserType.Administrator,
+                UserType = UserType.Administrator,
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
                 IsDelete = false
@@ -72,7 +75,7 @@ namespace FourEstate.Data
                 PhoneNumber = "0595555555",
                 DOB = DateTime.Now,
                 CreatedAt = DateTime.Now,
-                UserType = Core.Enums.UserType.Customer,
+                UserType = UserType.Customer,
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
                 IsDelete = false
@@ -86,7 +89,7 @@ namespace FourEstate.Data
                 PhoneNumber = "0595555555",
                 DOB = DateTime.Now,
                 CreatedAt = DateTime.Now,
-                UserType = Core.Enums.UserType.AdvertisementOwner,
+                UserType = UserType.AdvertisementOwner,
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
                 IsDelete = false
@@ -96,20 +99,62 @@ namespace FourEstate.Data
                 Email = "FourEstateEmployee@portal.com",
                 FullName = "FourEstate",
                 UserName = "FourEstateEmployee@portal.com",
-                PhoneNumber = "0595555555",
+                PhoneNumber = "1231312321",
                 DOB = DateTime.Now,
                 CreatedAt = DateTime.Now,
-                UserType = Core.Enums.UserType.Employee,
+                UserType = UserType.Employee,
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
                 IsDelete = false
             };
+
+
+            // User 1 Create
             await userManager.CreateAsync(user, "FourEstate2020$$");
+            // User 2 Create
             await userManager.CreateAsync(user2, "FourEstate2020$$");
+            // User 3 Create
             await userManager.CreateAsync(user3, "FourEstate2020$$");
+            //// User 4 Create
             await userManager.CreateAsync(user4, "FourEstate2020$$");
 
+
+
+            // user 1 Role
+            await userManager.AddToRoleAsync(user, UserType.Administrator.ToString());
+            // user 2 Role
+            await userManager.AddToRoleAsync(user2, UserType.Customer.ToString());
+            // user 3 Role
+            await userManager.AddToRoleAsync(user3, UserType.AdvertisementOwner.ToString());
+            //// user 4 Role
+            await userManager.AddToRoleAsync(user4, UserType.Employee.ToString());
+
         }
+
+        // Seed Roles for Enum 
+        public static async Task SeedRoles(this RoleManager<IdentityRole> RoleManager)
+        {
+
+            if (!RoleManager.Roles.Any())
+            {
+
+                var roles = new List<string>();
+                roles.Add(UserType.Administrator.ToString());
+                roles.Add(UserType.Customer.ToString());
+                roles.Add(UserType.Employee.ToString());
+                roles.Add(UserType.AdvertisementOwner.ToString());
+
+
+                foreach (var role in roles)
+                {
+                    await RoleManager.CreateAsync(new IdentityRole(role));
+                }
+
+            }
+
+        }
+
+
 
         public static async Task SeedCategory(this FourEstateDbContext context)
         {

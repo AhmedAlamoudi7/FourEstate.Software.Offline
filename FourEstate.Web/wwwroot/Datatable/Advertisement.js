@@ -41,7 +41,7 @@ var KTDatatableAutoColumnHideDemo = function () {
             {
                     field: 'title',
                     title: 'العنوان ',
-                    width: '250'
+                    width: '100'
                 },
                 {
                     field: 'startDate',
@@ -59,9 +59,14 @@ var KTDatatableAutoColumnHideDemo = function () {
                     width: '100'
                 },
                 {
+                    field: 'status',
+                    title: 'الحالة ',
+                    width: '100'
+                }, 
+                {
                     field: 'owner.fullName',
                     title: 'صاحب الاعلان ',
-                    width: '200'
+                    width: '100'
                 },
             {
                 field: 'Actions',

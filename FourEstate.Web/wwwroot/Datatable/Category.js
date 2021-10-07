@@ -44,7 +44,7 @@ var KTDatatableAutoColumnHideDemo = function () {
             },{
                     field: 'name',
                     title: 'الاسم ',
-                    width: '250'
+                    width: '150'
             },
             {
                 field: 'Actions',

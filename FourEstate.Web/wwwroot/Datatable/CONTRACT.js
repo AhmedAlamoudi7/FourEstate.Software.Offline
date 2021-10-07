@@ -60,7 +60,11 @@ var KTDatatableAutoColumnHideDemo = function () {
                 field: 'realEstate.name',
                 title: 'العقار',
                 width: '100'
-            },
+           },{
+                field: 'status',
+                title: 'الحالة ',
+                width: '100'
+           },
 
             {
                 field: 'Actions',

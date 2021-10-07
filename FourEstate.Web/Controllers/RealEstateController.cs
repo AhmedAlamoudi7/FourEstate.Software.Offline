@@ -3,6 +3,7 @@ using FourEstate.Core.Dtos;
 using FourEstate.Infrastructure.Services.Categories;
 using FourEstate.Infrastructure.Services.LocationsService;
 using FourEstate.Infrastructure.Services.REAlEstate;
+using FourEstate.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -19,7 +20,7 @@ namespace FourEstate.Web.Controllers
         private readonly ICategoryService _categoryService;
         private readonly ILocationService _locationService;
 
-        public RealEstateController(IRealEstateService realEstateService, ICategoryService categoryService, ILocationService locationService)
+        public RealEstateController(IRealEstateService realEstateService, ICategoryService categoryService, ILocationService locationService, IUserService userService) : base(userService)
         {
             _realEstateService = realEstateService;
             _categoryService = categoryService;

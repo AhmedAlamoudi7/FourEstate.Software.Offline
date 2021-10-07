@@ -21,15 +21,31 @@ namespace FourEstate.Infrastructure.Services.Users
         private readonly IMapper _mapper;
         private readonly IFileService _fileService;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
         private readonly IEmailService _emailService;
 
-        public UserService(IEmailService emailService, FourEstateDbContext db,IMapper mapper,UserManager<User> userManager, IFileService fileService)
+        public UserService(IEmailService emailService, FourEstateDbContext db,IMapper mapper,UserManager<User> userManager, IFileService fileService, RoleManager<IdentityRole> roleManager)
         {
             _db = db;
             _mapper = mapper;
             _userManager = userManager;
             _fileService = fileService;
             _emailService = emailService;
+            _roleManager = roleManager;
+        }
+
+
+        // mrthods to retub All Ptoparites in Base Controller to View In Cpanel
+        public UserViewModel GetUserByName(string UserName)
+        {
+
+            var users = _userManager.Users.SingleOrDefault(x => x.UserName == UserName && !x.IsDelete);
+            if (users == null) {
+                throw new EntityNotFoundException();
+            }
+          return  _mapper.Map<UserViewModel>(users);
+          
         }
 
 
@@ -85,10 +101,21 @@ namespace FourEstate.Infrastructure.Services.Users
                     throw new OperationFailedException();
                 }
 
+                //var oldrole = roleManager.FindById(olduser.Roles.FirstOrDefault().RoleId);
+                //var role = roleManager.FindById(RoleId);
+                //userManager.RemoveFromRole(UserId, oldrole.Name);
+                //var result = userManager.AddToRole(UserId, role.Name);
+
+
+                // Add Role To User
+                await _userManager.AddToRoleAsync(user, user.UserType.ToString());
+               
+
+                return user.Id;
+
             }
             catch(Exception e)
             {
-
             }
           
 
@@ -99,7 +126,7 @@ namespace FourEstate.Infrastructure.Services.Users
 
         public async Task<string> Update(UpdateUserDto dto)
         {
-            var emailOrPhoneIsExist = _db.Users.Any(x => !x.IsDelete && (x.Email == dto.Email || x.PhoneNumber == dto.PhoneNumber) && x.Id != dto.Id);
+            var emailOrPhoneIsExist = _db.Users.Any(x => !x.IsDelete && (x.Email == dto.Email || x.PhoneNumber == dto.PhoneNumber && x.Id == dto.Id) && x.Id != dto.Id);
             if (emailOrPhoneIsExist)
             {
                 throw new DuplicateEmailOrPhoneException();
@@ -112,6 +139,10 @@ namespace FourEstate.Infrastructure.Services.Users
             }
             _db.Users.Update(updatedUser);
             await _db.SaveChangesAsync();
+
+            // Add Role To User
+            await _userManager.RemoveFromRoleAsync(user, user.UserType.ToString());
+            await _userManager.AddToRoleAsync(user, user.UserType.ToString());
             return user.Id;
         }
 

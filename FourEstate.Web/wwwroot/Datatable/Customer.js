@@ -54,13 +54,14 @@ var KTDatatableAutoColumnHideDemo = function () {
                 {
                     field: 'fullName',
                     title: 'الاسم الكامل',
-                    width: '350'
+                    width: '250'
                 },
                 {
                     field: 'phone',
                     title: 'رقم الجوال',
                     width: '100'
                 },
+               
              
             {
                 field: 'Actions',

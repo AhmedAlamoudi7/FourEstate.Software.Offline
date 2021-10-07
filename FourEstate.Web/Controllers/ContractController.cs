@@ -3,6 +3,7 @@ using FourEstate.Core.Dtos;
 using FourEstate.infrastructure.Services.ContractSS;
 using FourEstate.Infrastructure.Services.Customers;
 using FourEstate.Infrastructure.Services.REAlEstate;
+using FourEstate.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -18,7 +19,7 @@ namespace FourEstate.Web.Controllers
         private readonly ICustomerService _customerService;
         private readonly IRealEstateService _realEstateService;
 
-        public ContractController(IContractService contractService, ICustomerService customerService, IRealEstateService realEstateService)
+        public ContractController(IContractService contractService, ICustomerService customerService, IRealEstateService realEstateService, IUserService userService) : base(userService)
         {
             _contractService = contractService;
             _customerService = customerService;

@@ -2,6 +2,7 @@
 using FourEstate.Core.Dtos;
 using FourEstate.Infrastructure.Services.Customers;
 using FourEstate.Infrastructure.Services.LocationsService;
+using FourEstate.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -17,7 +18,7 @@ namespace FourEstate.Web.Controllers
         private readonly ICustomerService _customerService;
         private readonly ILocationService _locationService;
 
-        public CustomerController(ICustomerService customerService, ILocationService locationService)
+        public CustomerController(ICustomerService customerService, ILocationService locationService, IUserService userService) : base(userService)
         {
             _customerService = customerService;
             _locationService = locationService;

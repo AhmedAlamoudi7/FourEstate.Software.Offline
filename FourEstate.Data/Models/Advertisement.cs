@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FourEstate.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,5 +21,12 @@ namespace FourEstate.Data.Models
         public float Price { get; set; }
         public string OwnerId { get; set; }
         public User Owner { get; set; }
+
+        public ContentStatus Stauts { get; set; }
+
+        public Advertisement()
+        {
+            Stauts = ContentStatus.Pending;
+        }
     }
 }

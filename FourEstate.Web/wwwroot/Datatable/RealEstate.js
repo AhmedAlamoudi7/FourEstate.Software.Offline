@@ -45,7 +45,7 @@ var KTDatatableAutoColumnHideDemo = function () {
                 },
                 {
                     field: 'description',
-                    title: ' الوصف ',
+                    title: 'الوصف',
                     width: '200'
                 },
                 {
@@ -61,6 +61,11 @@ var KTDatatableAutoColumnHideDemo = function () {
                 {
                     field: 'realEstateType',
                     title: 'نوع العقار ',
+                    width: '100'
+                },
+                {
+                    field: 'status',
+                    title: 'الحالة ',
                     width: '100'
                 },
                 {

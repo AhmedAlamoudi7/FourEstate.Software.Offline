@@ -1,4 +1,5 @@
 ﻿using FourEstate.Core.Dtos;
+using FourEstate.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace FourEstate.Infrastructure.Services.Users
     public interface IUserService
     {
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
+        UserViewModel GetUserByName(string UserName);
         Task<string> Create(CreateUserDto dto);
         Task<string> Update(UpdateUserDto dto);
         Task<string> Delete(string Id);

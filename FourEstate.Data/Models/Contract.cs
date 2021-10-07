@@ -20,5 +20,12 @@ namespace FourEstate.Data.Models
 
         public int RealEstateId { get; set; }
         public RealEstate RealEstate { get; set; }
+        public ContentStatus Stauts { get; set; }
+        
+        
+        public Contract()
+        {
+            Stauts = ContentStatus.Pending;
+        }
     }
 }

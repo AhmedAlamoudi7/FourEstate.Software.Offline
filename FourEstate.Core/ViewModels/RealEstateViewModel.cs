@@ -15,6 +15,8 @@ namespace FourEstate.Core.ViewModels
         public string Description { get; set; }
 
         public string RealEstateType { get; set; }
+       
+        public string Status { get; set; }
 
         public LocationViewModel Location { get; set; }
 

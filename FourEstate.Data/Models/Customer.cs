@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FourEstate.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,12 +17,13 @@ namespace FourEstate.Data.Models
         public DateTime? DOB { get; set; }
         public string ImageUrl { get; set; }
        
-        public string Phone { get; set; } 
+        public string Phone { get; set; }
 
         public List<Contract> Contract { get; set; }
 
         public int LocationId { get; set; }
         public Location Location { get; set; }
 
+   
     }
 }

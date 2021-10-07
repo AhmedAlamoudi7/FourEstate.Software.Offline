@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FourEstate.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,8 @@ namespace FourEstate.Data.Models
         public string Description { get; set; }
 
         public List<RealEstate> RealEstates { get; set; }
+
+       
+   
     }
 }

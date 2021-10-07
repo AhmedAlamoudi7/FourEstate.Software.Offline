@@ -19,6 +19,7 @@ namespace FourEstate.Data.Models
 
         public RealEstateType RealEstateType { get; set; }
 
+        public ContentStatus Stauts { get; set; }
 
         public int LocationId { get; set; }
         public Location Location { get; set; }
@@ -31,6 +32,10 @@ namespace FourEstate.Data.Models
 
         public List<Contract> Contracts{ get; set; }
 
+        public RealEstate()
+        {
+            Stauts = ContentStatus.Pending;
+        }
 
     }
 }

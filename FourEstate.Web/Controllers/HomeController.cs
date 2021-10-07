@@ -1,4 +1,5 @@
 ﻿using FourEstate.infrastructure.Services.Dashbords;
+using FourEstate.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +14,7 @@ namespace FourEstate.Web.Controllers
     {
         private readonly IDashboardService _dashboardService;
 
-        public HomeController(IDashboardService dashboardService)
+        public HomeController(IDashboardService dashboardService, IUserService userService) : base(userService)
         {
             _dashboardService = dashboardService;
         }

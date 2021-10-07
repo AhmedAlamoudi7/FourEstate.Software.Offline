@@ -15,6 +15,9 @@ namespace FourEstate.Core.ViewModels
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public float Price { get; set; }
+
+        public string Status { get; set; }
+
         public UserViewModel Owner { get; set; }
     }
 }
