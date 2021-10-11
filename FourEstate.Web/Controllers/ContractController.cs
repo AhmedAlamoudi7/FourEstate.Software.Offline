@@ -111,5 +111,11 @@ namespace FourEstate.Web.Controllers
             await _contractService.UpdateStatus(id, status);
             return Ok(Results.UpdateStatusResult());
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ExportToExcel()
+        {
+            return File(await _contractService.ExportToExcel(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "report_Contract.xlsx");
+        }
     }
 }

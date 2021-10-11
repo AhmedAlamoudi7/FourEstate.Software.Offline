@@ -2,9 +2,11 @@
 using FourEstate.Core.Dtos;
 using FourEstate.Core.Enums;
 using FourEstate.Core.Exceptions;
+using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
 using FourEstate.Data.Models;
+using FourEstate.Infrastructure.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -54,6 +56,42 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
 
 
 
+        public async Task<List<RealEstateViewModel>> GetAllAPI(/*int page*/string serachKey)
+        {
+            var realEstate =await _db.RealEstates.Include(x=>x.Category).Include(x=>x.Location).Where(x => x.Name.Contains(serachKey)|| string.IsNullOrWhiteSpace(serachKey)).ToListAsync();
+           return  _mapper.Map<List<RealEstateViewModel>>(realEstate);
+
+     
+        }
+            //var pages = Math.Ceiling(_db.RealEstates.Count() / 10.0);
+
+
+            //if (page < 1 || page > pages)
+            //{
+            //    page = 1;
+            //}
+
+            //var skip = (page - 1) * 10;
+
+            //var location = _db.RealEstates.Include(x=>x.Location).Include(x=>x.Category).Select(x => new RealEstateViewModel() { 
+
+            //    Id = x.Id,
+            //    Name =x.Name,
+            //    Description =x.Description,
+            //    Category = new CategoryViewModel() {Name =x.Category.Name },
+            //    Location = new LocationViewModel() {Country =x.Location.Country },
+            //    RealEstateType = x.RealEstateType.ToString(),
+            //    Status =x.Stauts.ToString(),
+            //}).Skip(skip).Take(10).ToList();
+            //var pagingResult = new paginationViewModel();
+            //pagingResult.Data = location;
+            //pagingResult.NumberOfPages = (int)pages;
+            //pagingResult.currentPage = page;
+
+            //return pagingResult;
+  
+
+
         public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
         {
             var changes = await _db.ContentChangeLogs.Where(x => x.ContentId == id && x.Type == ContentType.RealEstate).ToListAsync();
@@ -87,12 +125,20 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
 
         public async Task<UpdateRealEstateDto> Get(int id)
         {
-            var realEstates = await _db.RealEstates.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+            var realEstates = await _db.RealEstates.Include(x => x.Attachments).SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
             if (realEstates == null)
             {
                 throw new EntityNotFoundException();
             }
-            return _mapper.Map<UpdateRealEstateDto>(realEstates);
+            var dto =  _mapper.Map<UpdateRealEstateDto>(realEstates);
+
+
+            if (realEstates.Attachments != null)
+            {
+                dto.RealEstateAttachments = _mapper.Map<List<RealEstateAttachmentViewModel>>(realEstates.Attachments);
+            }
+
+            return dto;
         }
 
 
@@ -130,6 +176,8 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
             }
 
             var updatedrealEstates = _mapper.Map(dto, realEstates);
+            _db.RealEstates.Update(updatedrealEstates);
+            await _db.SaveChangesAsync();
 
             if (dto.Attachments != null)
             {
@@ -143,8 +191,7 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
                 }
             }
 
-            _db.RealEstates.Update(updatedrealEstates);
-            await _db.SaveChangesAsync();
+
 
             return realEstates.Id;
         }
@@ -175,6 +222,44 @@ namespace FourEstate.Infrastructure.Services.REAlEstate
 
             return realEstate.Id;
         }
+
+
+
+
+
+        public async Task<byte[]> ExportToExcel()
+        {
+            var users = await _db.RealEstates.Where(x => !x.IsDelete).ToListAsync();
+
+            return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"Name", new ExcelColumn("Name", 0)},
+                {"Description", new ExcelColumn("Description", 1)},
+                {"RealEstateType", new ExcelColumn("RealEstateType", 2)}
+            }, new List<ExcelRow>(users.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"Name", e.Name},
+                    {"Description", e.Description},
+                     {"RealEstateType", e.RealEstateType.ToString()}
+                }
+            })));
+        }
+
+
+        public async Task<int> RemoveAttachment(int id)
+        {
+            var realEstatet = await _db.RealEstatetAttachments.SingleOrDefaultAsync(x => x.Id == id);
+            if (realEstatet == null)
+            {
+                throw new EntityNotFoundException();
+            }
+            _db.RealEstatetAttachments.Remove(realEstatet);
+            await _db.SaveChangesAsync();
+            return realEstatet.Id;
+        }
+
     }
 }
 

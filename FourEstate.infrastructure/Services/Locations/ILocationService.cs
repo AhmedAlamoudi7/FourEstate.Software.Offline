@@ -1,5 +1,6 @@
 ﻿using FourEstate.Core.Dtos;
 using FourEstate.Core.Enums;
+using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace FourEstate.Infrastructure.Services.LocationsService
     {
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
         Task<List<LocationViewModel>> GetLocationCountry();
-
+        Task<List<LocationViewModel>> GetAllAPI(string serachKey);
         Task<int> Create(CreateLocationDto dto);
 
         Task<int> Update(UpdateLocationDto dto);
@@ -23,6 +24,6 @@ namespace FourEstate.Infrastructure.Services.LocationsService
         Task<int> Delete(int Id);
         Task<int> UpdateStatus(int id, ContentStatus status);
         Task<List<ContentChangeLogViewModel>> GetLog(int id);
-
+        Task<byte[]> ExportToExcel();
     }
 }

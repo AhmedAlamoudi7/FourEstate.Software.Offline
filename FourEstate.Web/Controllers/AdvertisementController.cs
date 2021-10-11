@@ -103,5 +103,11 @@ namespace FourEstate.Web.Controllers
             await _advertisementService.UpdateStatus(id, status);
             return Ok(Results.UpdateStatusResult());
         }
+
+        [HttpGet]
+        public async Task<IActionResult> ExportToExcel()
+        {
+            return File(await _advertisementService.ExportToExcel(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "report_Advertisment.xlsx");
+        }
     }
 }

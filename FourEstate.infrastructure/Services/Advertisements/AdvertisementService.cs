@@ -2,9 +2,11 @@
 using FourEstate.Core.Dtos;
 using FourEstate.Core.Enums;
 using FourEstate.Core.Exceptions;
+using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
 using FourEstate.Data.Models;
+using FourEstate.Infrastructure.Helpers;
 using FourEstate.Infrastructure.Services.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -61,19 +63,52 @@ namespace FourEstate.Infrastructure.Services.Advertisements
             return result;
         }
 
+        public async Task<List<AdvertisementViewModel>> GetAllAPI(string serachKey)
+        {
+            var advertisment = await _db.Advertisements.Include(x => x.Owner).Where(x => x.Title.Contains(serachKey) || string.IsNullOrWhiteSpace(serachKey)).ToListAsync();
+            return _mapper.Map<List<AdvertisementViewModel>>(advertisment);
+
+        }
+            //public paginationViewModel GetAllAPI(int page)
+            //{
+
+            //    var pages = Math.Ceiling(_db.Advertisements.Count() / 10.0);
 
 
-        public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
+            //    if (page < 1 || page > pages)
+            //    {
+            //        page = 1;
+            //    }
+
+            //    var skip = (page - 1) * 10;
+
+            //    var Advertisment = _db.Advertisements.Include(x => x.Owner).Where(x => !x.IsDelete).Select(x => new AdvertisementViewModel()
+            //    {
+            //        Id = x.Id,
+            //        Title = x.Title,
+            //        StartDate = x.StartDate.ToString(),
+            //        EndDate =x.EndDate.ToString(),
+            //        Price =x.Price,
+            //        WebsiteUrl =x.WebsiteUrl,
+            //        Owner =new UserViewModel() { FullName = x.Owner.FullName },
+            //        ImageUrl =x.ImageUrl,
+            //        Status = x.Stauts.ToString()
+
+            //    }).Skip(skip).Take(10).ToList();
+            //    var pagingResult = new paginationViewModel();
+            //    pagingResult.Data = Advertisment;
+            //    pagingResult.NumberOfPages = (int)pages;
+            //    pagingResult.currentPage = page;
+
+            //    return pagingResult;
+            //}
+
+
+            public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
         {
             var changes = await _db.ContentChangeLogs.Where(x => x.ContentId == id && x.Type == ContentType.Advertisment).ToListAsync();
             return _mapper.Map<List<ContentChangeLogViewModel>>(changes);
         }
-
-
-
-
-
-
 
         public async Task<int> Delete(int id)
         {
@@ -192,5 +227,29 @@ namespace FourEstate.Infrastructure.Services.Advertisements
             return advertisement.Id;
         }
 
+
+        public async Task<byte[]> ExportToExcel()
+        {
+            var users = await _db.Advertisements.Include(x => x.Owner).Where(x => !x.IsDelete).ToListAsync();
+
+            return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"Title", new ExcelColumn("Title", 0)},
+                {"Price", new ExcelColumn("Price", 1)},
+                {"StartDate", new ExcelColumn("StartDate", 2)},
+                {"EndDate", new ExcelColumn("EndDate", 3)},
+                {"Owner", new ExcelColumn("Owner", 3)}
+            }, new List<ExcelRow>(users.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"Price", e.Price.ToString()},
+                    {"Title", e.Title.ToString()},
+                    {"StartDate", e.StartDate.ToString()},
+                    {"EndDate", e.EndDate.ToString()},
+                    {"Owner", e.Owner.FullName}
+                }
+            })));
+        }
     }
 }

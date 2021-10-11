@@ -93,5 +93,12 @@ namespace FourEstate.Web.Controllers
             await _locationService.UpdateStatus(id, status);
             return Ok(Results.UpdateStatusResult());
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> ExportToExcel()
+        {
+            return File(await _locationService.ExportToExcel(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "report_Location.xlsx");
+        }
     }
 }

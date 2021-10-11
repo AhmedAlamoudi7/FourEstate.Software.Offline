@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using FourEstate.Core.Dtos;
 using FourEstate.Core.Exceptions;
+using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
 using FourEstate.Data.Models;
+using FourEstate.Infrastructure.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -47,6 +49,45 @@ namespace FourEstate.Infrastructure.Services.Categories
             };
             return result;
         }
+
+
+
+
+        public async Task<List<CategoryViewModel>> GetAllAPI(string serachKey)
+        {
+            var category = await _db.Categories.Where(x => x.Name.Contains(serachKey) || string.IsNullOrWhiteSpace(serachKey)).ToListAsync();
+            return _mapper.Map<List<CategoryViewModel>>(category);
+
+
+        }
+        //public paginationViewModel GetAllAPI(int page)
+        //{
+
+        //    var pages = Math.Ceiling(_db.Categories.Count() / 10.0);
+
+
+        //    if (page < 1 || page > pages)
+        //    {
+        //        page = 1;
+        //    }
+
+        //    var skip = (page - 1) * 10;
+
+        //    var category = _db.Categories.Select(x => new CategoryViewModel()
+        //    {
+        //        Id = x.Id,
+        //        Name = x.Name
+
+        //    }).Skip(skip).Take(10).ToList();
+        //    var pagingResult = new paginationViewModel();
+        //    pagingResult.Data = category;
+        //    pagingResult.NumberOfPages = (int)pages;
+        //    pagingResult.currentPage = page;
+
+        //    return pagingResult;
+        //}
+
+
 
         public async Task<List<CategoryViewModel>> GetCategoryName()
         {
@@ -102,6 +143,23 @@ namespace FourEstate.Infrastructure.Services.Categories
             return category.Id;
         }
 
+        public async Task<byte[]> ExportToExcel()
+        {
+            var users = await _db.Categories.Where(x => !x.IsDelete).ToListAsync();
 
+            return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"Name", new ExcelColumn("Name", 0)}
+               
+            }, new List<ExcelRow>(users.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"Name", e.Name},
+                   
+                }
+            })));
+
+        }
     }
 }

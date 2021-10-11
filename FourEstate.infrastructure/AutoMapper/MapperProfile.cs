@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FourEstate.Core.Dtos;
+using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data.Models;
 using System;
@@ -24,6 +25,7 @@ namespace FourEstate.Infrastructure.AutoMapper
             CreateMap<CreateCategoryDto, Category>();
             CreateMap<UpdateCategoryDto, Category>();
             CreateMap<Category, UpdateCategoryDto>();
+            CreateMap<CategoryViewModel, paginationViewModel>();
 
             CreateMap<Location, LocationViewModel>().ForMember(x => x.Status, x => x.MapFrom(x => x.Stauts.ToString()));
             CreateMap<CreateLocationDto, Location>();
@@ -36,11 +38,11 @@ namespace FourEstate.Infrastructure.AutoMapper
             CreateMap<Customer, UpdateCustomerDto>().ForMember(x => x.ImageUrl, x => x.Ignore());
            
             
-            CreateMap<RealEstate, RealEstateViewModel>().ForMember(x => x.Status, x => x.MapFrom(x => x.Stauts.ToString())); 
+            CreateMap<RealEstate, RealEstateViewModel>().ForMember(x => x.Status, x => x.MapFrom(x => x.Stauts.ToString()));
             CreateMap<CreateRealEstateDto, RealEstate>().ForMember(x => x.Attachments, x => x.Ignore());
             CreateMap<UpdateRealEstateDto, RealEstate>().ForMember(x => x.Attachments, x => x.Ignore());
-            CreateMap<RealEstate, UpdateRealEstateDto>().ForMember(x => x.Attachments, x => x.Ignore());
-
+            CreateMap<RealEstate, UpdateRealEstateDto>().ForMember(x => x.Attachments, x => x.Ignore()).ForMember(x => x.RealEstateAttachments, x => x.Ignore());
+            CreateMap<RealEstatetAttachment, RealEstateAttachmentViewModel>();
 
 
             CreateMap<Advertisement, AdvertisementViewModel>().ForMember(x => x.StartDate, x => x.MapFrom(x => x.StartDate.ToString("yyyy:MM:dd"))).ForMember(x => x.EndDate, x => x.MapFrom(x => x.EndDate.ToString("yyyy:MM:dd"))).ForMember(x => x.Status, x => x.MapFrom(x => x.Stauts.ToString())); ;

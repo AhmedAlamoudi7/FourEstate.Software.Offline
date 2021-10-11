@@ -388,7 +388,7 @@ namespace FourEstate.Data
             advertisements.Price = 4444;
             advertisements.ImageUrl = "";
             advertisements.WebsiteUrl = "https://localhost:44345/Advertisement/Index";
-            advertisements.OwnerId = Core.Enums.UserType.AdvertisementOwner.ToString();
+            advertisements.OwnerId = UserType.AdvertisementOwner.ToString();
             advertisements.CreatedAt = DateTime.Now;
             advertisements.StartDate = DateTime.Now;
             advertisements.EndDate = DateTime.Now;
@@ -412,7 +412,7 @@ namespace FourEstate.Data
             contract.RealEstateId = 1;
             contract.Price = 4444;
             contract.CustomerId = 1;
-            contract.ContractType = Core.Enums.ContractType.sale;
+            contract.ContractType = ContractType.sale;
             contract.CreatedAt = DateTime.Now;
             contract.IsDelete = false;
 

@@ -74,5 +74,10 @@ namespace FourEstate.Web.Controllers
             return Ok(Results.DeleteSuccessResult());
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ExportToExcel()
+        {
+            return File(await _categoryService.ExportToExcel(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "report_Category.xlsx");
+        }
     }
 }

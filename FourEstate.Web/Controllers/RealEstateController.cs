@@ -118,5 +118,21 @@ namespace FourEstate.Web.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> ExportToExcel()
+        {
+            return File(await _realEstateService.ExportToExcel(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "report_RealEstate.xlsx");
+        }
+
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> RemoveAttachment(int id)
+        {
+            await _realEstateService.RemoveAttachment(id);
+            return Ok(Results.DeleteSuccessResult());
+        }
+
     }
 }

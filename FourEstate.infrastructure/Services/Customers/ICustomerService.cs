@@ -1,4 +1,5 @@
 ﻿using FourEstate.Core.Dtos;
+using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace FourEstate.Infrastructure.Services.Customers
     {
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
 
-
+        Task<List<CustomerViewModel>> GetAllAPI(string serachKey);
         Task<List<CustomerViewModel>> GetCustomerName();
 
         Task<int> Create(CreateCustomerDto dto);
@@ -22,5 +23,6 @@ namespace FourEstate.Infrastructure.Services.Customers
         Task<UpdateCustomerDto> Get(int Id);
 
         Task<int> Delete(int Id);
+        Task<byte[]> ExportToExcel();
     }
 }

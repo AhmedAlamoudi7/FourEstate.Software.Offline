@@ -2,9 +2,11 @@
 using FourEstate.Core.Constants;
 using FourEstate.Core.Dtos;
 using FourEstate.Core.Exceptions;
+using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
 using FourEstate.Data.Models;
+using FourEstate.Infrastructure.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -71,6 +73,47 @@ namespace FourEstate.Infrastructure.Services.Users
             };
             return result;
         }
+
+        public async Task<List<UserViewModel>> GetAllAPI(string serachKey)
+        {
+            var users = await _db.Users.Where(x => x.FullName.Contains(serachKey) || x.PhoneNumber.Contains(serachKey) || string.IsNullOrWhiteSpace(serachKey)).ToListAsync();
+            return _mapper.Map<List<UserViewModel>>(users);
+
+
+
+        }
+        //public paginationViewModel GetAllAPI(int page)
+        //{
+
+        //    var pages = Math.Ceiling(_db.Users.Count() / 10.0);
+
+
+        //    if (page < 1 || page > pages)
+        //    {
+        //        page = 1;
+        //    }
+
+        //    var skip = (page - 1) * 10;
+
+        //    var user = _db.Users.Select(x => new UserViewModel()
+        //    {
+        //        Id = x.Id,
+        //        FullName = x.FullName,
+        //        Email = x.Email,
+        //        PhoneNumber = x.PhoneNumber,
+        //        DOB = x.DOB,
+        //        UserType = x.UserType.ToString(),
+
+
+        //    }).Skip(skip).Take(10).ToList();
+        //    var pagingResult = new paginationViewModel();
+        //    pagingResult.Data = user;
+        //    pagingResult.NumberOfPages = (int)pages;
+        //    pagingResult.currentPage = page;
+
+        //    return pagingResult;
+        //}
+
 
 
         public async Task<string> Create(CreateUserDto dto)
@@ -170,6 +213,26 @@ namespace FourEstate.Infrastructure.Services.Users
             return _mapper.Map<UpdateUserDto>(user);
         }
 
+
+        public async Task<byte[]> ExportToExcel()
+        {
+            var users = await _db.Users.Where(x => !x.IsDelete).ToListAsync();
+
+            return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"FullName", new ExcelColumn("FullName", 0)},
+                {"Email", new ExcelColumn("Email", 1)},
+                {"Phone", new ExcelColumn("Phone", 2)}
+            }, new List<ExcelRow>(users.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"FullName", e.FullName},
+                    {"Email", e.Email},
+                    {"Phone", e.PhoneNumber}
+                }
+            })));
+        }
 
 
         private string GenratePassword()

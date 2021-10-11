@@ -2,9 +2,11 @@
 using FourEstate.Core.Dtos;
 using FourEstate.Core.Enums;
 using FourEstate.Core.Exceptions;
+using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
 using FourEstate.Data.Models;
+using FourEstate.Infrastructure.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -48,6 +50,44 @@ namespace FourEstate.Infrastructure.Services.LocationsService
             };
             return result;
         }
+
+        public async Task<List<LocationViewModel>> GetAllAPI(string serachKey)
+        {
+            var location = await _db.Locations.Where(x => x.Country.Contains(serachKey) || x.City.Contains(serachKey) || x.Street.Contains(serachKey) || string.IsNullOrWhiteSpace(serachKey)).ToListAsync();
+            return _mapper.Map<List<LocationViewModel>>(location);
+        }
+        //public paginationViewModel GetAllAPI(int page)
+        //{
+
+        //    var pages = Math.Ceiling(_db.Locations.Count() / 10.0);
+
+
+        //    if (page < 1 || page > pages)
+        //    {
+        //        page = 1;
+        //    }
+
+        //    var skip = (page - 1) * 10;
+
+        //    var location = _db.Locations.Select(x => new LocationViewModel()
+        //    {
+        //        Id = x.Id,
+        //        Country =x.Country,
+        //        City= x.City,
+        //        Street =x.Street,
+        //        StreetNumber =x.StreetNumber,
+        //        Status =x.Stauts.ToString()
+
+        //    }).Skip(skip).Take(10).ToList();
+        //    var pagingResult = new paginationViewModel();
+        //    pagingResult.Data = location;
+        //    pagingResult.NumberOfPages = (int)pages;
+        //    pagingResult.currentPage = page;
+
+        //    return pagingResult;
+        //}
+
+
 
 
         public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
@@ -138,5 +178,27 @@ namespace FourEstate.Infrastructure.Services.LocationsService
         }
 
 
+
+        public async Task<byte[]> ExportToExcel()
+        {
+            var users = await _db.Locations.Where(x => !x.IsDelete).ToListAsync();
+
+            return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"Country", new ExcelColumn("Country", 0)},
+                {"City", new ExcelColumn("City", 1)},
+                {"Street", new ExcelColumn("Street", 2)}
+            }, new List<ExcelRow>(users.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"Country", e.Country},
+                    {"City", e.City},
+                     {"Street", e.Street}
+                }
+            })));
         }
+
+
+    }
 }

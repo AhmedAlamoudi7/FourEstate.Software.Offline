@@ -8,6 +8,10 @@ namespace FourEstate.Core.Constants
 {
     public class Results
     {
+        public static string GetSuccessResult()
+        {
+            return "s: تم جلب البيانات بنجاح";
+        }
         public static object AddSuccessResult()
         {
             return new { status = 1, msg = "s: تمت اضافة العنصر بنجاح", close = 1 };

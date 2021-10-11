@@ -1,13 +1,9 @@
 ﻿@{ ViewData["Title"] = "الصفحة الرئيسية"; }
 @model DashboardViewModel
-
-    <link href="~/css/HomeCss.css" rel="stylesheet" />
+    <link href="~/css/myHomeCss.css" rel="stylesheet" />
     @*<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">*@
-
-
-
 
 
 
@@ -82,13 +78,13 @@
 
             <!-- Start Statices Setion -->
             <section class="Statices text-center">
-                <div class="Statices-back">
+                <div class="Statices-back" style="background-color: #efecec">
                     <div class="container ">
                         <div class="row">
                             <div class="col-lg-3 col-md-6 col-xs-12">
-                                <div class="static-box  wow bounceInDown" data-wow-duration="2s">
+                                <div class="static-box  wow bounceInDown" data-wow-duration=".5s">
                                     <img src="~/ThemImages/Home header/administrator.png" alt="Customer Service">
-                                    <h2>عدد المستخدمين</h2>
+                                    <h2 style="color:#a1a1a1">عدد المستخدمين</h2>
                                     <!-- <p class="lead mx-auto">24/7h</p> -->
                                     @*     <h1><span class='one'>@Model.NoumberOfUsers</span></h1>*@
                                     <p class="lead mx-auto">@Model.NoumberOfUsers</p>
@@ -96,9 +92,9 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-xs-12">
-                                <div class="static-box wow bounceInDown" data-wow-duration="2s" data-wow-delay="2s" >
+                                <div class="static-box wow bounceInDown" data-wow-duration=".5s" data-wow-delay=".5s" >
                                     <img src="~/ThemImages/Home header/ancient.png" alt="businessman">
-                                    <h2>عدد العقارات</h2>
+                                    <h2 style="color:#a1a1a1">عدد العقارات</h2>
                                     <!-- <p class="lead mx-auto">115</p> -->
                                     @* <h1>@Model.NoumberOfRealEstate</h1>*@
                                     <p class="lead mx-auto">@Model.NoumberOfRealEstate</p>
@@ -107,9 +103,9 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-xs-12">
-                                <div class="static-box wow bounceInDown" data-wow-duration="2s" data-wow-delay="3s">
+                                <div class="static-box wow bounceInDown" data-wow-duration=".5s" data-wow-delay="1s">
                                     <img src="~/ThemImages/Home header/bars-chart-1.png" alt="crm">
-                                    <h2>عدد التصنيفات</h2>
+                                    <h2 style="color:#a1a1a1">عدد التصنيفات</h2>
                                     <!-- <p class="lead mx-auto">503</p> -->
                                     @*<h1>@Model.NoumberOfCategory</h1>*@
                                     <p class="lead mx-auto">@Model.NoumberOfCategory</p>
@@ -117,9 +113,9 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-xs-12">
-                                <div class="static-box wow bounceInDown" data-wow-duration="2s" data-wow-delay="4s" >
+                                <div class="static-box wow bounceInDown" data-wow-duration=".5s" data-wow-delay="1.5s" >
                                     <img id="img-1" src="~/ThemImages/Home header/text-lines-3.png" alt="browser">
-                                    <h2>عدد الإعلانات</h2>
+                                    <h2 style="color:#a1a1a1">عدد الإعلانات</h2>
                                     <!-- <p class="animate__zoomOutDown" class="lead mx-auto">433</p> -->
                                     @* <h1>@Model.NoumberOfAdvertisment</h1>*@
                                     <p class="lead mx-auto">@Model.NoumberOfAdvertisment</p>
@@ -130,9 +126,9 @@
                         <!-- End row -->
                         <div class="row" style="margin-top:40px">
                             <div class="col-lg-4 col-md-6 col-xs-12">
-                                <div class="static-box wow bounceInDown" data-wow-duration="2s" data-wow-delay="5s" >
+                                <div class="static-box wow bounceInDown" data-wow-duration=".5s" data-wow-delay="2s" >
                                     <img src="~/ThemImages/Home header/wikipedia-1.png" alt="Customer Service">
-                                    <h2>عدد العقود</h2>
+                                    <h2 style="color:#a1a1a1">عدد العقود</h2>
                                     <!-- <p class="lead mx-auto">24/7h</p> -->
                                     @* <h1>@Model.NoumberOfContracts</h1>*@
                                     <p class="lead mx-auto">@Model.NoumberOfContracts</p>
@@ -141,9 +137,9 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-xs-12">
-                                <div class="static-box wow bounceInDown" data-wow-duration="2s" data-wow-delay="6s">
+                                <div class="static-box wow bounceInDown" data-wow-duration=".5s" data-wow-delay="2.5s">
                                     <img class="img-fluid" src="~/ThemImages/Home header/webcam.png" alt="businessman">
-                                    <h2>عدد المواقع</h2>
+                                    <h2 style="color:#a1a1a1">عدد المواقع</h2>
                                     <!-- <p class="lead mx-auto">115</p> -->
                                     @* <h1>@Model.NoumberOfLocation</h1>*@
                                     <p class="lead mx-auto">@Model.NoumberOfLocation</p>
@@ -151,9 +147,9 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-xs-12">
-                                <div class="static-box wow bounceInDown" data-wow-duration="2s" data-wow-delay="7s">
+                                <div class="static-box wow bounceInDown" data-wow-duration=".5s" data-wow-delay="3s">
                                     <img src="~/ThemImages/Home header/customer-service.png" alt="crm">
-                                    <h2>عدد الزبائن</h2>
+                                    <h2 style="color:#a1a1a1">عدد الزبائن</h2>
                                     <!-- <p class="lead mx-auto">503</p> -->
                                     @*<h1>@Model.NoumberOfCustomer</h1>*@
                                     <p class="lead mx-auto">@Model.NoumberOfCustomer</p>
@@ -175,12 +171,12 @@
 
 
             <div class="row">
-                <div class="col-md-6 text-center wow bounceInDown" data-wow-duration=".5s" data-wow-delay=".5s" data-wow-offset="200">
+                <div class="col-md-6 text-center wow animate__backInLeft" data-wow-duration=".5s" data-wow-delay=".5s"data-wow-offset="200">
                     <h3>توزيع المستخدمين حسب النوع </h3>
                     <canvas id="myUserChart" width="400" height="400"></canvas>
                 </div>
 
-                <div class="col-md-6 text-center wow bounceInDown" data-wow-duration=".5s" data-wow-delay="1s" data-wow-offset="200">
+                <div class="col-md-6 text-center wow animate__backInLeft" data-wow-duration="1s" data-wow-delay="1s" data-wow-offset="200">
                     <h3>توزيع العقارات حسب النوع </h3>
                     <canvas id="myRealEstateChart" width="400" height="400"></canvas>
                 </div>
@@ -188,7 +184,7 @@
             <br />
 
             <div class="row">
-                <div class="col-md-6 text-center offset-3 wow bounceInDown" data-wow-duration=".5s" data-wow-delay="1.5s" data-wow-offset="200">
+                <div class="col-md-6 text-center offset-3 wow animate__backInUp" data-wow-duration=".5s" data-wow-offset="200">
                     <h3>توزيع العقود حسب النوع </h3>
                     <canvas id="myContractChart" width="400" height="400"></canvas>
                 </div>

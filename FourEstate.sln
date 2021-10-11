@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FourEstate.infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FourEstate.Data", "FourEstate.Data\FourEstate.Data.csproj", "{3F637381-D22C-4397-ABF4-2CD1140393B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourEstate.API", "FourEstate.API\FourEstate.API.csproj", "{53AD34C4-FD23-4010-87EB-2457BD33EC2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3F637381-D22C-4397-ABF4-2CD1140393B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F637381-D22C-4397-ABF4-2CD1140393B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F637381-D22C-4397-ABF4-2CD1140393B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53AD34C4-FD23-4010-87EB-2457BD33EC2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53AD34C4-FD23-4010-87EB-2457BD33EC2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53AD34C4-FD23-4010-87EB-2457BD33EC2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53AD34C4-FD23-4010-87EB-2457BD33EC2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

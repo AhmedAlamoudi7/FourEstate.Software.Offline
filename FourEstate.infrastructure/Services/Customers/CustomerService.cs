@@ -2,9 +2,11 @@
 using FourEstate.Core.Constants;
 using FourEstate.Core.Dtos;
 using FourEstate.Core.Exceptions;
+using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
 using FourEstate.Data.Models;
+using FourEstate.Infrastructure.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -30,7 +32,7 @@ namespace FourEstate.Infrastructure.Services.Customers
 
         public async Task<ResponseDto> GetAll(Pagination pagination, Query query)
         {
-            var queryString = _db.Customers.Where(x => !x.IsDelete && (x.FirstName.Contains(query.GeneralSearch) || x.LastName.Contains(query.GeneralSearch) || x.FullName.Contains(query.GeneralSearch) || string.IsNullOrWhiteSpace(query.GeneralSearch))).AsQueryable();
+            var queryString = _db.Customers.Include(x=>x.Location).Where(x => !x.IsDelete && (x.FirstName.Contains(query.GeneralSearch) || x.LastName.Contains(query.GeneralSearch) || x.FullName.Contains(query.GeneralSearch) || string.IsNullOrWhiteSpace(query.GeneralSearch))).AsQueryable();
 
             var dataCount = queryString.Count();
             var skipValue = pagination.GetSkipValue();
@@ -52,6 +54,39 @@ namespace FourEstate.Infrastructure.Services.Customers
         }
 
 
+        public async Task<List<CustomerViewModel>> GetAllAPI(string serachKey)
+        {
+            var customer = await _db.Customers.Where(x => x.FirstName.Contains(serachKey) || x.FullName.Contains(serachKey) || x.LastName.Contains(serachKey) || string.IsNullOrWhiteSpace(serachKey)).ToListAsync();
+            return _mapper.Map<List<CustomerViewModel>>(customer);
+        }
+        //public paginationViewModel GetAllAPI(int page)
+        //{
+
+        //    var pages = Math.Ceiling(_db.Customers.Count() / 10.0);
+
+
+        //    if (page < 1 || page > pages)
+        //    {
+        //        page = 1;
+        //    }
+
+        //    var skip = (page - 1) * 10;
+
+        //    var customer = _db.Customers.Select(x => new CustomerViewModel()
+        //    {
+        //        Id = x.Id,
+        //        FirstName = x.FirstName,
+        //        LastName = x.LastName,
+        //        FullName = x.FullName,
+        //        Phone = x.Phone
+        //    }).Skip(skip).Take(10).ToList();
+        //    var pagingResult = new paginationViewModel();
+        //    pagingResult.Data = customer;
+        //    pagingResult.NumberOfPages = (int)pages;
+        //    pagingResult.currentPage = page;
+
+        //    return pagingResult;
+        //}
 
         public async Task<List<CustomerViewModel>> GetCustomerName()
         {
@@ -118,6 +153,27 @@ namespace FourEstate.Infrastructure.Services.Customers
             return customer.Id;
         }
 
+
+
+        public async Task<byte[]> ExportToExcel()
+        {
+            var customers = await _db.Customers.Include(x=>x.Location).Where(x => !x.IsDelete).ToListAsync();
+
+            return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
+            {
+                {"FullName", new ExcelColumn("FullName", 0)},
+                {"DOB", new ExcelColumn("DOB", 1)},
+                {"Location", new ExcelColumn("Location", 2)}
+            }, new List<ExcelRow>(customers.Select(e => new ExcelRow
+            {
+                Values = new Dictionary<string, string>
+                {
+                    {"FullName", e.FullName},
+                    {"DOB", e.DOB.ToString()},
+                     {"Location", e.Location.Country}
+                }
+            })));
+        }
 
     }
 }

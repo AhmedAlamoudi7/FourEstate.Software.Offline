@@ -1,4 +1,5 @@
 ﻿using FourEstate.Core.Enums;
+using FourEstate.Core.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -38,5 +39,7 @@ namespace FourEstate.Core.Dtos
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "نوع العقار")]
         public RealEstateType RealEstateType { get; set; }
+        public List<RealEstateAttachmentViewModel> RealEstateAttachments { get; set; }
+
     }
 }

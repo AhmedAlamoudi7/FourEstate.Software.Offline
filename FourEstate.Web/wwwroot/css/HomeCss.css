@@ -1,28 +1,23 @@
-﻿
-@import url(https://fonts.googleapis.com/css?family=Lato:700);
+﻿@import url(https://fonts.googleapis.com/css?family=Lato:700);
 
 .card-label {
 }
 /* start  Statices Section*/
 .Statices {
-    /*    background: url("'~/ThemImages/Home header/xSvrp8.jpg'") no-repeat center center fixed;
-*/ width: 100%;
+    width: 100%;
     min-height: 300px;
 }
 
 
-
-
-    .Statices .Statices-back {
-        /*background-color: rgb(2, 2, 2, 0.7);*/
-        background-color:#9ec2e6;
+    /*#efecec*/
+.Statices .Statices-back {
         color: #B6B5B5;
         min-width: 300px;
         padding-top: 70px;
         padding-bottom: 40px;
     }
 
-        .Statices .Statices-back .static-box img {
+.Statices .Statices-back .static-box img {
             height: 100px;
             width: 100px;
             padding-bottom: 20px;
@@ -34,17 +29,17 @@
 }
 
 .Statices .Statices-back .static-box h2 {
-    color: beige;
+    color: #a1a1a1;
     font-size: 20px;
     font-weight: 500;
-    font-weight:bolder;
+    font-weight: bolder;
 }
 
 .Statices .Statices-back .static-box h1 {
     font-family: 'Teko', sans-serif;
     font-size: 4rem;
     font-weight: 600;
-    color:black;
+    color: black;
 }
 
 .Statices .Statices-back .static-box:hover h1 {
@@ -77,13 +72,12 @@
 /*End Statices*/
 /* Start Team Box */
 .Statices .Statices-back .static-box p {
-    
-    font-size: xx-large;
+    font-size: large;
     font-weight: bolder;
     color: beige;
-    height: 70px;
-    width: 70px;
-    background-color: #000000;
+    height: 40px;
+    width: 40px;
+    background-color: yellow;
     border-radius: 50%;
     line-height: 70px;
     -webkit-transition-duration: .7s;
