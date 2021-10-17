@@ -18,7 +18,7 @@ namespace FourEstate.API.Controllers
 
         private readonly IAdvertisementService _advertisementService;
 
-        public AdvertisementController(IAdvertisementService advertisementService)/*, IUserService userService) : base(userService)*/
+        public AdvertisementController(IAdvertisementService advertisementService,IUserService userService) : base(userService)
         {
             _advertisementService = advertisementService;
         }

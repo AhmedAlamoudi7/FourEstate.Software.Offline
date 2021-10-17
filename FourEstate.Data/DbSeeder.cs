@@ -61,6 +61,7 @@ namespace FourEstate.Data
                 PhoneNumber = "0595555555",
                 DOB = DateTime.Now,
                 CreatedAt = DateTime.Now,
+                // new DateTime(); to add my date
                 UserType = UserType.Administrator,
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,

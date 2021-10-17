@@ -17,7 +17,7 @@ namespace FourEstate.API.Controllers
 
         private readonly ILocationService _locationService;
 
-        public LocationsController(ILocationService locationService)
+        public LocationsController(ILocationService locationService, IUserService userService) : base(userService)
         {
             _locationService = locationService;
         }

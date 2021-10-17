@@ -19,7 +19,7 @@ namespace FourEstate.API.Controllers
 
         private readonly IRealEstateService _realEstateService;
 
-        public RealEstateController(IRealEstateService realEstateService)
+        public RealEstateController(IRealEstateService realEstateService, IUserService userService) : base(userService)
         {
             _realEstateService = realEstateService;
 

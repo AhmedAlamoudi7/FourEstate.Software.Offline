@@ -82,38 +82,7 @@ namespace FourEstate.Infrastructure.Services.Users
 
 
         }
-        //public paginationViewModel GetAllAPI(int page)
-        //{
-
-        //    var pages = Math.Ceiling(_db.Users.Count() / 10.0);
-
-
-        //    if (page < 1 || page > pages)
-        //    {
-        //        page = 1;
-        //    }
-
-        //    var skip = (page - 1) * 10;
-
-        //    var user = _db.Users.Select(x => new UserViewModel()
-        //    {
-        //        Id = x.Id,
-        //        FullName = x.FullName,
-        //        Email = x.Email,
-        //        PhoneNumber = x.PhoneNumber,
-        //        DOB = x.DOB,
-        //        UserType = x.UserType.ToString(),
-
-
-        //    }).Skip(skip).Take(10).ToList();
-        //    var pagingResult = new paginationViewModel();
-        //    pagingResult.Data = user;
-        //    pagingResult.NumberOfPages = (int)pages;
-        //    pagingResult.currentPage = page;
-
-        //    return pagingResult;
-        //}
-
+    
 
 
         public async Task<string> Create(CreateUserDto dto)
@@ -184,7 +153,7 @@ namespace FourEstate.Infrastructure.Services.Users
             await _db.SaveChangesAsync();
 
             // Add Role To User
-            await _userManager.RemoveFromRoleAsync(user, user.UserType.ToString());
+        //    await _userManager.RemoveFromRoleAsync(user, user.UserType.ToString());
             await _userManager.AddToRoleAsync(user, user.UserType.ToString());
             return user.Id;
         }

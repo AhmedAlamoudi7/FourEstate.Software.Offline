@@ -15,7 +15,7 @@ namespace FourEstate.API.Controllers
 
         private readonly ICategoryService _categoryService;
         
-        public CategoryController(ICategoryService categoryService)/*, IUserService userService) : base(userService)*/
+        public CategoryController(ICategoryService categoryService, IUserService userService) : base(userService)
         {
             _categoryService = categoryService;
         }

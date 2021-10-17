@@ -18,7 +18,7 @@ namespace FourEstate.API.Controllers
         private readonly ICustomerService _customerService;
         ////private readonly ILocationService _locationService;
 
-        public CustomerController(ICustomerService customerService)/*, ILocationService locationService), IUserService userService) : base(userService)*/
+        public CustomerController(ICustomerService customerService, IUserService userService) : base(userService)/*, ILocationService locationService), IUserService userService) : base(userService)*/
         {
             _customerService = customerService;
             //_locationService = locationService;
