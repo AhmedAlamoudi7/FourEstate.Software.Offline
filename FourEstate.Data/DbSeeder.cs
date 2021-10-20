@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,11 +21,12 @@ namespace FourEstate.Data
             {
                 try
                 {
-
                     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-                    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                    // Seed Roles for Enum 
+                    var RoleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
                     userManager.SeedUser().Wait();
-                    roleManager.SeedRoles().Wait();
+                    RoleManager.SeedRoles().Wait();
 
                     var context = scope.ServiceProvider.GetRequiredService<FourEstateDbContext>();
                     context.SeedLocation().Wait();
@@ -32,6 +34,8 @@ namespace FourEstate.Data
                     context.SeedCustomer().Wait();
                     context.SeedRealEstate().Wait();
                     context.SeedContract().Wait();
+                    context.SeedHoliday().Wait();
+
                     //   //context.SeedAdvertisement().Wait();
 
                 }
@@ -110,6 +114,9 @@ namespace FourEstate.Data
             };
 
 
+
+
+
             // User 1 Create
             await userManager.CreateAsync(user, "FourEstate2020$$");
             // User 2 Create
@@ -122,17 +129,28 @@ namespace FourEstate.Data
 
 
             // user 1 Role
-            await userManager.AddToRoleAsync(user, UserType.Administrator.ToString());
+            if (user.UserType == UserType.Administrator)
+            {
+                await userManager.AddToRoleAsync(user, "Administrator");
+            }
             // user 2 Role
-            await userManager.AddToRoleAsync(user2, UserType.Customer.ToString());
+            if (user2.UserType == UserType.Customer)
+            {
+                await userManager.AddToRoleAsync(user2, Core.Enums.UserType.Customer.ToString());
+            }
             // user 3 Role
-            await userManager.AddToRoleAsync(user3, UserType.AdvertisementOwner.ToString());
-            //// user 4 Role
-            await userManager.AddToRoleAsync(user4, UserType.Employee.ToString());
+            if (user3.UserType == UserType.Administrator)
+            {
+                await userManager.AddToRoleAsync(user3, UserType.AdvertisementOwner.ToString());
+            }
+            // user 4 Role
+            if (user4.UserType == UserType.Administrator)
+            {
+                await userManager.AddToRoleAsync(user4, UserType.Employee.ToString());
+            }
 
         }
-
-        // Seed Roles for Enum 
+        //Seed Roles for Enum
         public static async Task SeedRoles(this RoleManager<IdentityRole> RoleManager)
         {
 
@@ -140,12 +158,10 @@ namespace FourEstate.Data
             {
 
                 var roles = new List<string>();
-                roles.Add(UserType.Administrator.ToString());
-                roles.Add(UserType.Customer.ToString());
-                roles.Add(UserType.Employee.ToString());
-                roles.Add(UserType.AdvertisementOwner.ToString());
-
-
+                roles.Add(Core.Enums.UserType.Administrator.ToString());
+                roles.Add(Core.Enums.UserType.Customer.ToString());
+                roles.Add(Core.Enums.UserType.Employee.ToString());
+                roles.Add(Core.Enums.UserType.AdvertisementOwner.ToString());
                 foreach (var role in roles)
                 {
                     await RoleManager.CreateAsync(new IdentityRole(role));
@@ -154,6 +170,10 @@ namespace FourEstate.Data
             }
 
         }
+
+
+
+
 
 
 
@@ -259,6 +279,10 @@ namespace FourEstate.Data
             customer.DOB = DateTime.Now;
             customer.ImageUrl = "";
             customer.Phone = "0831213312";
+            customer.AnotherPhone = "1231231";
+            customer.CustomerType = Core.Constants.CustomerType.Person;
+            customer.TaxNumber = "2333";
+            customer.IdentityImage = "";
             customer.LocationId = 1;
             customer.CreatedAt = DateTime.Now;
             customer.IsDelete = false;
@@ -269,7 +293,11 @@ namespace FourEstate.Data
             customer2.FullName = $"{customer2.FirstName}  {customer2.LastName}";
             customer2.DOB = DateTime.Now;
             customer2.ImageUrl = "";
-            customer.Phone = "31241242";
+            customer2.Phone = "31241242";
+            customer2.AnotherPhone = "12323";
+            customer2.CustomerType = Core.Constants.CustomerType.organization;
+            customer2.TaxNumber = "312312";
+            customer2.IdentityImage = "";
             customer2.LocationId = 2;
             customer2.CreatedAt = DateTime.Now;
             customer2.IsDelete = false;
@@ -281,6 +309,10 @@ namespace FourEstate.Data
             customer3.DOB = DateTime.Now;
             customer3.ImageUrl = "";
             customer3.Phone = "132424";
+            customer3.AnotherPhone = "23434324";
+            customer3.CustomerType = Core.Constants.CustomerType.agent;
+            customer3.TaxNumber = "45244";
+            customer3.IdentityImage = "";
             customer3.LocationId = 3;
             customer3.CreatedAt = DateTime.Now;
             customer3.IsDelete = false;
@@ -292,6 +324,10 @@ namespace FourEstate.Data
             customer4.DOB = DateTime.Now;
             customer4.ImageUrl = "";
             customer4.Phone = "12312";
+            customer4.AnotherPhone = "423434";
+            customer4.CustomerType = Core.Constants.CustomerType.ClientAuction;
+            customer4.TaxNumber = "766";
+            customer4.IdentityImage = "";
             customer4.LocationId = 4;
             customer4.CreatedAt = DateTime.Now;
             customer4.IsDelete = false;
@@ -453,6 +489,42 @@ namespace FourEstate.Data
         }
 
 
+        public static async Task SeedHoliday(this FourEstateDbContext context)
+        {
+
+            if (await context.Holidays.AnyAsync())
+            {
+                return;
+            }
+            var holidays = new List<Holiday>();
+
+            var holiday = new Holiday();
+            holiday.Title = "رأس السنة";
+            holiday.CreatedAt =DateTime.Now;
+            holiday.From = DateTime.Now;
+            holiday.To = DateTime.Now;
+
+            var holiday2 = new Holiday();
+            holiday2.Title = "المولد النبوي";
+            holiday2.CreatedAt = DateTime.Now;
+            holiday2.From = DateTime.Now;
+            holiday2.To = DateTime.Now;
+
+            var holiday3 = new Holiday();
+            holiday3.Title = "عيد الأضحى";
+            holiday3.CreatedAt = DateTime.Now;
+            holiday3.From = DateTime.Now;
+            holiday3.To = DateTime.Now;
+
+            holidays.Add(holiday);
+            holidays.Add(holiday2);
+            holidays.Add(holiday3);
+
+            await context.Holidays.AddRangeAsync(holidays);
+            await context.SaveChangesAsync();
+
+
+        }
     }
 }
 

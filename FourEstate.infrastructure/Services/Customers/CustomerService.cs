@@ -59,43 +59,12 @@ namespace FourEstate.Infrastructure.Services.Customers
             var customer = await _db.Customers.Where(x => x.FirstName.Contains(serachKey) || x.FullName.Contains(serachKey) || x.LastName.Contains(serachKey) || string.IsNullOrWhiteSpace(serachKey)).ToListAsync();
             return _mapper.Map<List<CustomerViewModel>>(customer);
         }
-        //public paginationViewModel GetAllAPI(int page)
-        //{
-
-        //    var pages = Math.Ceiling(_db.Customers.Count() / 10.0);
-
-
-        //    if (page < 1 || page > pages)
-        //    {
-        //        page = 1;
-        //    }
-
-        //    var skip = (page - 1) * 10;
-
-        //    var customer = _db.Customers.Select(x => new CustomerViewModel()
-        //    {
-        //        Id = x.Id,
-        //        FirstName = x.FirstName,
-        //        LastName = x.LastName,
-        //        FullName = x.FullName,
-        //        Phone = x.Phone
-        //    }).Skip(skip).Take(10).ToList();
-        //    var pagingResult = new paginationViewModel();
-        //    pagingResult.Data = customer;
-        //    pagingResult.NumberOfPages = (int)pages;
-        //    pagingResult.currentPage = page;
-
-        //    return pagingResult;
-        //}
-
+      
         public async Task<List<CustomerViewModel>> GetCustomerName()
         {
             var customer = await _db.Customers.Where(x => !x.IsDelete).ToListAsync();
             return _mapper.Map<List<CustomerViewModel>>(customer);
         }
-
-
-
 
 
         public async Task<int> Create(CreateCustomerDto dto)
@@ -114,18 +83,14 @@ namespace FourEstate.Infrastructure.Services.Customers
         public async Task<int> Update(UpdateCustomerDto dto)
         {
             var customer = await _db.Customers.SingleOrDefaultAsync(x => !x.IsDelete && x.Id == dto.Id);
-            if(customer == null)
+            if (customer == null)
             {
                 throw new EntityNotFoundException();
             }
-            var updatedCustomer = _mapper.Map<UpdateCustomerDto, Customer>(dto, customer);
-            if (dto.ImageUrl != null)
-            {
-                customer.ImageUrl = await _fileService.SaveFile(dto.ImageUrl, FolderNames.ImagesFolder);
-            }
-            _db.Customers.Update(updatedCustomer);
+            var updatedcustomer = _mapper.Map<UpdateCustomerDto, Customer>(dto, customer);
+            _db.Customers.Update(updatedcustomer);
             await _db.SaveChangesAsync();
-            return updatedCustomer.Id;
+            return updatedcustomer.Id;
         }
 
 
@@ -138,6 +103,8 @@ namespace FourEstate.Infrastructure.Services.Customers
             }
             return _mapper.Map<UpdateCustomerDto>(customer);
         }
+
+
 
 
         public async Task<int> Delete(int Id)

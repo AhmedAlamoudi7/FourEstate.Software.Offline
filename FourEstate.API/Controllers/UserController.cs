@@ -14,7 +14,7 @@ namespace FourEstate.API.Controllers
 
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService) : base(userService)
+        public UserController(IUserService userService) /*: base(userService)*/
         {
             _userService = userService;
         }
@@ -49,6 +49,12 @@ namespace FourEstate.API.Controllers
             return Ok(GetRespons(Results.DeleteSuccessResult()));
         }
 
+        [HttpPut]
+        public async Task<IActionResult> ChangeActive(string Id)
+        {
+            await _userService.ChangeActive(Id);
+            return Ok(GetRespons(Results.ChangeActiveSuccessResult()));
+        }
 
 
         //[HttpGet]

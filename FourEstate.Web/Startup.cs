@@ -2,10 +2,12 @@ using FourEstate.Data;
 using FourEstate.Data.Models;
 using FourEstate.infrastructure.Services.ContractSS;
 using FourEstate.infrastructure.Services.Dashbords;
+using FourEstate.infrastructure.Services.Holidays;
 using FourEstate.Infrastructure.AutoMapper;
 using FourEstate.Infrastructure.Middlewares;
 using FourEstate.Infrastructure.Services;
 using FourEstate.Infrastructure.Services.Advertisements;
+using FourEstate.Infrastructure.Services.Auctions;
 using FourEstate.Infrastructure.Services.Categories;
 using FourEstate.Infrastructure.Services.Customers;
 using FourEstate.Infrastructure.Services.LocationsService;
@@ -67,6 +69,8 @@ namespace FourEstate.Web
             services.AddScoped<IContractService, ContractService>();
             services.AddScoped<IRealEstateService, RealEstateService>();
             services.AddScoped<IDashboardService, DashboardService>();
+            services.AddScoped<IHolidayService, HolidayService>();
+            services.AddScoped<IAuctionService, AuctionService>();
 
 
 

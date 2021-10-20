@@ -17,5 +17,7 @@ namespace FourEstate.Core.ViewModels
         public string ImageUrl { get; set; }
         public string UserType { get; set; }
         public DateTime CreatedAt { get; set; }
+        public bool IsActive { get; set; }
+
     }
 }

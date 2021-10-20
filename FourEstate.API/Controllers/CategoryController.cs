@@ -15,7 +15,7 @@ namespace FourEstate.API.Controllers
 
         private readonly ICategoryService _categoryService;
         
-        public CategoryController(ICategoryService categoryService, IUserService userService) : base(userService)
+        public CategoryController(ICategoryService categoryService)/*, IUserService userService) : base(userService)*/
         {
             _categoryService = categoryService;
         }
@@ -61,7 +61,7 @@ namespace FourEstate.API.Controllers
         //public async Task<IActionResult> ExportToExcel()
         //{
         //    //var r = File(await _categoryService.ExportToExcel(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "report_Category.xlsx");
-        //    return Ok(GetRespons(""),r);
+        //    return Ok(GetRespons(""), r);
         //}
     }
 }

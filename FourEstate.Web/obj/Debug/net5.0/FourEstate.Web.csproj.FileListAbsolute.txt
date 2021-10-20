@@ -1158,3 +1158,12 @@ C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\Four
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\bin\Debug\net5.0\System.IO.Packaging.dll
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Holiday\Create.cshtml.g.cs
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Holiday\Index.cshtml.g.cs
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Holiday\Update.cshtml.g.cs
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\bin\Debug\net5.0\ar-SA\FourEstate.Core.resources.dll
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\bin\Debug\net5.0\en-US\FourEstate.Core.resources.dll
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Auction\Create.cshtml.g.cs
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Auction\GetLog.cshtml.g.cs
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Auction\Index.cshtml.g.cs
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Web\obj\Debug\net5.0\Razor\Views\Auction\Update.cshtml.g.cs

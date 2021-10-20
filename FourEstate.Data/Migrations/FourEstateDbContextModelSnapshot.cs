@@ -75,6 +75,80 @@ namespace FourEstate.Data.Migrations
                     b.ToTable("Advertisements");
                 });
 
+            modelBuilder.Entity("FourEstate.Data.Models.Auction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AuctionType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourtType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DOAuction")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("NumberOfPieces")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RealEstateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stauts")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RealEstateId");
+
+                    b.ToTable("Auctions");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.AuctionAttachment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AttachmentUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AuctionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuctionId");
+
+                    b.ToTable("AuctionAttachments");
+                });
+
             modelBuilder.Entity("FourEstate.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -188,11 +262,17 @@ namespace FourEstate.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AnotherPhone")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerType")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("DOB")
                         .HasColumnType("datetime2");
@@ -201,6 +281,9 @@ namespace FourEstate.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentityImage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
@@ -218,6 +301,9 @@ namespace FourEstate.Data.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TaxNumber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -229,6 +315,42 @@ namespace FourEstate.Data.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.Holiday", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("To")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Holidays");
                 });
 
             modelBuilder.Entity("FourEstate.Data.Models.Location", b =>
@@ -378,6 +500,9 @@ namespace FourEstate.Data.Migrations
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
@@ -577,6 +702,28 @@ namespace FourEstate.Data.Migrations
                     b.Navigation("Owner");
                 });
 
+            modelBuilder.Entity("FourEstate.Data.Models.Auction", b =>
+                {
+                    b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
+                        .WithMany()
+                        .HasForeignKey("RealEstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RealEstate");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.AuctionAttachment", b =>
+                {
+                    b.HasOne("FourEstate.Data.Models.Auction", "Auction")
+                        .WithMany("Attachments")
+                        .HasForeignKey("AuctionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Auction");
+                });
+
             modelBuilder.Entity("FourEstate.Data.Models.Contract", b =>
                 {
                     b.HasOne("FourEstate.Data.Models.Customer", "Customer")
@@ -686,6 +833,11 @@ namespace FourEstate.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.Auction", b =>
+                {
+                    b.Navigation("Attachments");
                 });
 
             modelBuilder.Entity("FourEstate.Data.Models.Category", b =>

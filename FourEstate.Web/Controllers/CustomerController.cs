@@ -37,7 +37,7 @@ namespace FourEstate.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CreateAsync()
+        public async Task<IActionResult> Create()
         {
             ViewData["location"] = new SelectList(await _locationService.GetLocationCountry(), "Id", "Country");
             return View();
@@ -60,9 +60,8 @@ namespace FourEstate.Web.Controllers
         public async Task<IActionResult> Update(int id)
         {
             ViewData["location"] = new SelectList(await _locationService.GetLocationCountry(), "Id", "Country");
-
-            var user = await _customerService.Get(id);
-            return View(user);
+            var customer = await _customerService.Get(id);
+            return View(customer);
         }
 
         [HttpPost]
@@ -74,9 +73,9 @@ namespace FourEstate.Web.Controllers
                 return Ok(Results.EditSuccessResult());
             }
             ViewData["location"] = new SelectList(await _locationService.GetLocationCountry(), "Id", "Country");
-
             return View(dto);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)

@@ -124,3 +124,5 @@ C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\Four
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Data\obj\Debug\net5.0\ref\FourEstate.Data.dll
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Data\obj\Debug\net5.0\FourEstate.Data.pdb
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Data\obj\Debug\net5.0\FourEstate.Data.genruntimeconfig.cache
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Data\bin\Debug\net5.0\ar-SA\FourEstate.Core.resources.dll
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Data\bin\Debug\net5.0\en-US\FourEstate.Core.resources.dll

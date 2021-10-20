@@ -1,15 +1,15 @@
 ﻿@model UpdateCustomerDto
 
 @{
-    ViewData["Title"] = "اضافة زبون جديد";
+    ViewData["Title"] = "تعديل زبون ";
     Layout = null;
 }
 
+
 <form asp-action="Update" class="ajaxForm" tname="#kt_datatable" enctype="multipart/form-data">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input asp-for="Id" type="hidden" />
-
-    <div class="row">
+    <input type="hidden" asp-for="Id">
+    @*<div class="row">
         <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
@@ -60,7 +60,43 @@
             </div>
         </div>
 
-    </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="IdentityImage" class="control-label"></label>
+                <input asp-for="IdentityImage" class="form-control" />
+                <span asp-validation-for="IdentityImage" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="AnotherPhone" class="control-label"></label>
+                <input asp-for="AnotherPhone" class="form-control" />
+                <span asp-validation-for="AnotherPhone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="TaxNumber" class="control-label"></label>
+                <input asp-for="TaxNumber" class="form-control" />
+                <span asp-validation-for="TaxNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="CustomerType" class="control-label"></label>
+                <select asp-for="CustomerType" class="form-control">
+                    <option value="@CustomerType.Person">فرد</option>
+                    <option value="@CustomerType.organization">مؤسسة</option>
+                    <option value="@CustomerType.Comapny">شركة </option>
+                    <option value="@CustomerType.ClientAuction">عميل مزاد </option>
+                    <option value="@CustomerType.agent">وكيل </option>
+
+
+                </select>
+                <span asp-validation-for="CustomerType" class="text-danger"></span>
+            </div>
+        </div>
+    </div>*@
 
 
     <div class="form-group">

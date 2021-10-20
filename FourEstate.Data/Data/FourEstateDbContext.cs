@@ -22,6 +22,9 @@ namespace FourEstate.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<ContentChangeLog> ContentChangeLogs { get; set; }
+        public DbSet<Holiday> Holidays { get; set; }
+        public DbSet<Auction> Auctions { get; set; }
+        public DbSet<AuctionAttachment> AuctionAttachments { get; set; }
 
 
 

@@ -29,7 +29,10 @@ namespace FourEstate.Core.Constants
         {
             return new { status = 1, msg = "s: تم حذف العنصر بنجاح", close = 1 };
         }
+        public static object ChangeActiveSuccessResult()
+        {
+            return new { status = 1, msg = "s: تم تغيير التفعيل بنجاح", close = 1 };
+        }
 
-    
     }
 }

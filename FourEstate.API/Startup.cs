@@ -1,14 +1,18 @@
 using FourEstate.Data;
 using FourEstate.Data.Models;
 using FourEstate.infrastructure.Services.ContractSS;
+using FourEstate.infrastructure.Services.Holidays;
 using FourEstate.Infrastructure.AutoMapper;
 using FourEstate.Infrastructure.Services;
 using FourEstate.Infrastructure.Services.Advertisements;
+using FourEstate.Infrastructure.Services.Auctions;
+using FourEstate.Infrastructure.Services.AuthService;
 using FourEstate.Infrastructure.Services.Categories;
 using FourEstate.Infrastructure.Services.Customers;
 using FourEstate.Infrastructure.Services.LocationsService;
 using FourEstate.Infrastructure.Services.REAlEstate;
 using FourEstate.Infrastructure.Services.Users;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,9 +22,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace FourEstate.API
@@ -55,10 +62,58 @@ namespace FourEstate.API
             }).AddEntityFrameworkStores<FourEstateDbContext>();
                  
 
-            services.AddSwaggerGen();
-
             
             services.AddAutoMapper(typeof(MapperProfile).Assembly);
+            services.AddAuthentication(config =>
+            {
+                config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                config.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+     .AddJwtBearer(options =>
+     {
+         options.TokenValidationParameters = new TokenValidationParameters
+         {
+             ValidateIssuer = true,
+             ValidateAudience = true,
+             ValidateLifetime = true,
+             ValidateIssuerSigningKey = true,
+             ValidIssuer = Configuration["Jwt:Issure"],
+             ValidAudience = Configuration["Jwt:Issure"],
+             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Signinkey"]))
+         };
+     });
+
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Foure Estate Software", Version = "v1" });
+                c.AddSecurityDefinition("Bearer",
+                    new OpenApiSecurityScheme
+                    {
+                        Description = "Please enter into field the word 'Bearer' following by space and JWT",
+                        Name = "Authorization",
+                        In = ParameterLocation.Header,
+                        Scheme = "Bearer"
+                    });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+                        },
+                        new List<string>()
+                    }
+                });
+            });
 
             services.AddScoped<IEmailService, EmailService>();
             services.AddSingleton<IFileService, FileService>();
@@ -70,6 +125,9 @@ namespace FourEstate.API
             services.AddScoped<IContractService, ContractService>();
             services.AddScoped<IRealEstateService, RealEstateService>();
             //services.AddScoped<IDashboardService, DashboardService>();
+            services.AddScoped<IHolidayService, HolidayService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAuctionService, AuctionService>();
 
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddControllersWithViews();

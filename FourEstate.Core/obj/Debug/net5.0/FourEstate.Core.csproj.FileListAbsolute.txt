@@ -82,3 +82,11 @@ C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\Four
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.dll
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\ref\FourEstate.Core.dll
 C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.pdb
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\ar-SA\FourEstate.Core.resources.dll
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\bin\Debug\net5.0\en-US\FourEstate.Core.resources.dll
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.Resourses.Messages.resources
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.Resourses.Messages.ar-SA.resources
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.Resourses.Messages.en-US.resources
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\FourEstate.Core.csproj.GenerateResource.cache
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\ar-SA\FourEstate.Core.resources.dll
+C:\Users\khatib\Desktop\FourEstate -النسخة الoffline\AhmedAlamoudi7\FourEstate.Software\FourEstate.Core\obj\Debug\net5.0\en-US\FourEstate.Core.resources.dll

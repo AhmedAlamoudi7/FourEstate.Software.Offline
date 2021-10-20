@@ -2512,6 +2512,14 @@
         "runtime": {
           "FourEstate.Core.dll": {}
         },
+        "resources": {
+          "ar-SA/FourEstate.Core.resources.dll": {
+            "locale": "ar-SA"
+          },
+          "en-US/FourEstate.Core.resources.dll": {
+            "locale": "en-US"
+          }
+        },
         "compile": {
           "FourEstate.Core.dll": {}
         }

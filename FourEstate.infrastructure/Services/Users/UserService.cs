@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FourEstate.Core.Constants;
 using FourEstate.Core.Dtos;
+using FourEstate.Core.Enums;
 using FourEstate.Core.Exceptions;
 using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
@@ -103,7 +104,6 @@ namespace FourEstate.Infrastructure.Services.Users
             }
 
             var password = GenratePassword();
-
             try
             {
                 var result = await _userManager.CreateAsync(user, password);
@@ -119,9 +119,31 @@ namespace FourEstate.Infrastructure.Services.Users
                 //var result = userManager.AddToRole(UserId, role.Name);
 
 
-                // Add Role To User
-                await _userManager.AddToRoleAsync(user, user.UserType.ToString());
-               
+
+                // to make Role To user by enum Constant and userManage
+                if (user.UserType == Core.Enums.UserType.Employee)
+                {
+
+                    await _userManager.AddToRoleAsync(user, Core.Enums.UserType.Employee.ToString());
+                }
+                else if (user.UserType == Core.Enums.UserType.Administrator)
+                {
+
+                    await _userManager.AddToRoleAsync(user, Core.Enums.UserType.Administrator.ToString());
+
+                }
+                else if (user.UserType == Core.Enums.UserType.AdvertisementOwner)
+                {
+                    await _userManager.AddToRoleAsync(user, Core.Enums.UserType.AdvertisementOwner.ToString());
+
+
+                }
+                else if (user.UserType == Core.Enums.UserType.Customer)
+                {
+                    await _userManager.AddToRoleAsync(user, Core.Enums.UserType.Customer.ToString());
+
+
+                }
 
                 return user.Id;
 
@@ -209,6 +231,19 @@ namespace FourEstate.Infrastructure.Services.Users
             return Guid.NewGuid().ToString().Substring(1, 8);
         }
 
+
+        public async Task ChangeActive(string Id)
+        {
+            var user = _db.Users.SingleOrDefault(x => x.Id == Id && !x.IsDelete);
+
+            if (user == null)
+            {
+                throw new EntityNotFoundException();
+            }
+            // means if active set not and if not set active
+            user.IsActive = !user.IsActive;
+            await _userManager.UpdateAsync(user);
+        }
 
 
     }

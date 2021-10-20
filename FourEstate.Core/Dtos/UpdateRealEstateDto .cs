@@ -39,6 +39,9 @@ namespace FourEstate.Core.Dtos
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "نوع العقار")]
         public RealEstateType RealEstateType { get; set; }
+        /// <summary>
+        /// To Change List Image Item
+        /// </summary>
         public List<RealEstateAttachmentViewModel> RealEstateAttachments { get; set; }
 
     }

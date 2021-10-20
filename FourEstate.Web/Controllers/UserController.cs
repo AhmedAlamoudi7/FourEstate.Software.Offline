@@ -73,6 +73,16 @@ namespace FourEstate.Web.Controllers
             return Ok(Results.DeleteSuccessResult());
         }
 
+        [HttpPut]
+        public async Task<IActionResult> ChangeActive(string Id)
+        {
+            if (ModelState.IsValid)
+            {
+                await _userService.ChangeActive(Id);
+                return Ok(Results.EditSuccessResult());
+            }
+            return View(Id);
+        }
 
 
         [HttpGet]

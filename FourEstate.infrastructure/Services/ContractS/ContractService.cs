@@ -67,36 +67,6 @@ namespace FourEstate.infrastructure.Services.ContractSS
             return _mapper.Map<List<ContractViewModel>>(contract);
         }
 
-        //public paginationViewModel GetAllAPI(int page)
-        //{
-
-        //    var pages = Math.Ceiling(_db.Locations.Count() / 10.0);
-
-
-        //    if (page < 1 || page > pages)
-        //    {
-        //        page = 1;
-        //    }
-
-        //    var skip = (page - 1) * 10;
-
-        //    var contract = _db.Contracts.Include(x=>x.RealEstate).Include(x=>x.Customer).Select(x => new ContractViewModel()
-        //    {
-        //        Id = x.Id,
-        //        ContractType = x.ContractType.ToString(),
-        //        Price = x.Price,
-        //        Customer = new CustomerViewModel() {Id =x.Customer.Id,FullName =x.Customer.FullName},
-        //        RealEstate = new RealEstateViewModel() { Id = x.RealEstate.Id,Name = x.RealEstate.Name},
-        //        Status = x.Stauts.ToString()
-
-        //    }).Skip(skip).Take(10).ToList();
-        //    var pagingResult = new paginationViewModel();
-        //    pagingResult.Data = contract;
-        //    pagingResult.NumberOfPages = (int)pages;
-        //    pagingResult.currentPage = page;
-
-        //    return pagingResult;
-    //}
 
         public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
         {

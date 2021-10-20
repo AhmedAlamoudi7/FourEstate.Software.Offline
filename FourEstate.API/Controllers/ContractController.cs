@@ -21,7 +21,7 @@ namespace FourEstate.API.Controllers
         //private readonly ICustomerService _customerService;
         //private readonly IRealEstateService _realEstateService;
 
-        public ContractController(IContractService contractService, IUserService userService) : base(userService)/*, ICustomerService customerService, IRealEstateService realEstateService)/*, IUserSer*//*vice userService) : base(userService)*/
+        public ContractController(IContractService contractService)/*, IUserService userService) : base(userService)/*, ICustomerService customerService, IRealEstateService realEstateService)/*, IUserSer*//*vice userService) : base(userService)*/
         {
             _contractService = contractService;
             //_customerService = customerService;

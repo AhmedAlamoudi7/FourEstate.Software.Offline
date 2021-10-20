@@ -18,6 +18,8 @@ namespace FourEstate.Data.Models
         public BaseEntity()
         {
             CreatedAt = DateTime.Now;
-        }
+            IsDelete = false;
+
     }
+}
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FourEstate.Core.Constants;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,6 +31,19 @@ namespace FourEstate.Core.Dtos
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "رقم الجوال")]
         public string Phone { get; set; }
+      
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "صورة الهوية")]
+        public IFormFile IdentityImage { get; set; }
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "نوع الزبون")]
+        public CustomerType CustomerType { get; set; }
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "رقم الجوال الثاني")]
+        public string AnotherPhone { get; set; }
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "رقم الضريبي")]
+        public string TaxNumber { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "موقعك")]
