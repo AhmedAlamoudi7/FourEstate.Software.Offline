@@ -1,0 +1,184 @@
+﻿@model CreateInvoiceDto
+
+@{
+    ViewData["Title"] = " إضافة فاتورة جديدة";
+    Layout = null;
+}
+
+<form asp-action="Create" class="ajaxForm" tname="#kt_datatable">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="InvoiceNumber" class="control-label"></label>
+                <input asp-for="InvoiceNumber" class="form-control" />
+                <span asp-validation-for="InvoiceNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="InvoiceDate" class="control-label"></label>
+                <input asp-for="InvoiceDate" class="form-control" />
+                <span asp-validation-for="InvoiceDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="InvoiceType" class="control-label"></label>
+                <select asp-for="InvoiceType" class="form-control">
+                    <option value="@InvoiceType.Cash">نقدي</option>
+                    <option value="@InvoiceType.Credit"> بطاقة بنكية</option>
+                </select>
+                <span asp-validation-for="InvoiceType" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="@ViewBag.user"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label"></label>
+                <select asp-for="CustomerId" class="form-control" asp-items="@ViewBag.customer"></select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="RealEstateId" class="control-label"></label>
+                <select asp-for="RealEstateId" class="form-control" asp-items="@ViewBag.realEstate"></select>
+                <span asp-validation-for="RealEstateId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Value" class="control-label"></label>
+                <input asp-for="Value" class="form-control" />
+                <span asp-validation-for="Value" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="FullValueBefore" class="control-label"></label>
+                <input asp-for="FullValueBefore" class="form-control" type="text" name="FullValueBefore" />
+                <span asp-validation-for="FullValueBefore" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Quentity" class="control-label"></label>
+                <input asp-for="Quentity" class="form-control" type="text" name="Quentity" />
+                <span asp-validation-for="Quentity" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <hr />
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="FullValueWithOutTaxValue" class="control-label"></label>
+                <input asp-for="FullValueWithOutTaxValue" class="form-control" name="FullValueWithOutTaxValue"  />
+                <span asp-validation-for="FullValueWithOutTaxValue" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="TaxValue" class="control-label"></label>
+                <input asp-for="TaxValue" class="form-control" name="taxValue"  />
+                <span asp-validation-for="TaxValue" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="FullValueAfter" class="control-label"></label>
+                <input asp-for="FullValueAfter" class="form-control" name="FullValueAfter"  />
+                <span asp-validation-for="FullValueAfter" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="BalanceDue" class="control-label"></label>
+                <input asp-for="BalanceDue" class="form-control" name="BalanceDue"  />
+                <span asp-validation-for="BalanceDue" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="اضافة" class="btn btn-primary" />
+        <a data-dismiss="modal" aria-label="Close" class="btn btn-danger">الغاء</a>
+    </div>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+    PageLoadActions();
+</script>
+
+<script>
+
+    $.ajax({
+        url: "/Invoice/Create", success: function (result) {
+
+            $('input[name="FullValueBefore"]').change(function () {
+                $('input[name="FullValueWithOutTaxValue"]').val(0);
+                var valueFull = ($('input[name=FullValueBefore]')).val() * $('input[name=Quentity]').val();
+                $('input[name="FullValueWithOutTaxValue"]').val(valueFull);
+                ////taxValue
+                $('input[name="taxValue"]').val(0);
+                var taxValue = valueFull * .05;
+                $('input[name="taxValue"]').val(taxValue.toFixed(2));
+                //FullValueAfter
+                $('input[name="FullValueAfter"]').val(0);
+                var FullValueAfterValue = valueFull - taxValue;
+                $('input[name="FullValueAfter"]').val(FullValueAfterValue.toFixed(2));
+                //BalanceDue
+                $('input[name="BalanceDue"]').val(0);
+                $('input[name="BalanceDue"]').val(FullValueAfterValue.toFixed(2));
+            });
+
+            $('input[name="Quentity"]').change(function () {
+                $('input[name="FullValueWithOutTaxValue"]').val(0);
+                var valueFull = ($('input[name=FullValueBefore]')).val() * $('input[name=Quentity]').val();
+                $('input[name="FullValueWithOutTaxValue"]').val(valueFull);
+                ////taxValue
+                $('input[name="taxValue"]').val(0);
+                var taxValue = valueFull * .05;
+                $('input[name="taxValue"]').val(taxValue.toFixed(2));
+                //FullValueAfter
+                $('input[name="FullValueAfter"]').val(0);
+                var FullValueAfterValue = valueFull - taxValue;
+                $('input[name="FullValueAfter"]').val(FullValueAfterValue.toFixed(2));
+                //BalanceDue
+                $('input[name="BalanceDue"]').val(0);
+                $('input[name="BalanceDue"]').val(FullValueAfterValue.toFixed(2));
+            });
+
+        }
+    });
+</script>
+    <script src="~/js/Jquery3.4.1.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

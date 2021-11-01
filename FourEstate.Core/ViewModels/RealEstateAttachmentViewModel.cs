@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FourEstate.Core.ViewModels
 {
-    public class AuctionAttachmentViewModel
+    public class RealEstateAttachmentViewModel
     {
         public int Id { get; set; }
         public string AttachmentUrl { get; set; }

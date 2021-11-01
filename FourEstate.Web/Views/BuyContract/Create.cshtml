@@ -1,0 +1,105 @@
+﻿@model CreateBuyContractDto
+
+@{
+    ViewData["Title"] = "إضافة عقد شراء جديد";
+    Layout = null;
+}
+
+<form asp-action="Create" class="ajaxForm" tname="#kt_datatable">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="DateType" class="control-label"></label>
+                <select asp-for="DateType" class="form-control">
+                    <option value="@DateType.Hijri">هجري</option>
+                    <option value="@DateType.Gregorian">ميلادي</option>
+                </select>
+                <span asp-validation-for="DateType" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="FormulaContract" class="control-label"></label>
+                <select asp-for="FormulaContract" class="form-control">
+                    <option value="@FormulaContract.TamBeHamdallah">تم بحمد الله</option>
+                </select>
+                <span asp-validation-for="FormulaContract" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="@ViewBag.user"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label"></label>
+                <select asp-for="CustomerId" class="form-control" asp-items="@ViewBag.customer"></select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="RealEstateId" class="control-label"></label>
+                <select asp-for="RealEstateId" class="form-control" asp-items="@ViewBag.realeste"></select>
+                <span asp-validation-for="RealEstateId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="LocationDetails" class="control-label"></label>
+                <input asp-for="LocationDetails" class="form-control" />
+                <span asp-validation-for="LocationDetails" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="CurrenyType" class="control-label"></label>
+                <select asp-for="CurrenyType" class="form-control">
+                    <option value="@CurrenyType.Dollar">دولار</option>
+                    <option value="@CurrenyType.sheql">شيكل</option>
+                    <option value="@CurrenyType.Dinar">دينار</option>
+                </select>
+                <span asp-validation-for="CurrenyType" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <input type="submit" value="إضافة" class="btn btn-primary" />
+        <a data-dismiss="modal" aria-label="Close" class="btn btn-danger">الغاء</a>
+    </div>
+</form>
+
+
+<script>
+    PageLoadActions();
+</script>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

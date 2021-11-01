@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
-using ContentType = FourEstate.Core.Enums.ContentType;
 
 namespace FourEstate.Data.Models
 {
@@ -15,7 +14,7 @@ namespace FourEstate.Data.Models
 
         public int ContentId { get; set; }
 
-        public ContentType Type { get; set; }
+        public Core.Enums.ContentType Type { get; set; }
 
         public DateTime ChangeAt { get; set; }
 

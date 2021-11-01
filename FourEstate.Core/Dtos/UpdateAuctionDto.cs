@@ -1,4 +1,4 @@
-﻿using FourEstate.Core.Constants;
+﻿using FourEstate.Core.Enums;
 using FourEstate.Core.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -45,7 +45,7 @@ namespace FourEstate.Core.Dtos
         [Display(Name = "إضافة ملفات")]
         public List<IFormFile> Attachments { get; set; }
 
-        public List<AuctionAttachmentViewModel> AuctionAttachments { get; set; }
+        public List<AuctionDbAttchmentViewModel> AuctionDbAttchment { get; set; }
 
     }
 }

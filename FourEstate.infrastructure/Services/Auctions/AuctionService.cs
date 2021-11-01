@@ -2,11 +2,11 @@
 using FourEstate.Core.Dtos;
 using FourEstate.Core.Enums;
 using FourEstate.Core.Exceptions;
-using FourEstate.Core.ViewModel;
 using FourEstate.Core.ViewModels;
 using FourEstate.Data;
 using FourEstate.Data.Models;
 using FourEstate.Infrastructure.Helpers;
+using FourEstate.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,30 +14,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FourEstate.Infrastructure.Services.Auctions
+namespace FourEstate.infrastructure.Services.Auctions
 {
-    public class AuctionService : IAuctionService
+     public class AuctionService :IAuctionService
     {
         private readonly FourEstateDbContext _db;
         private readonly IMapper _mapper;
-        private readonly IFileService _fileService;
-
-        public AuctionService(FourEstateDbContext db, IMapper mapper, IFileService fileService)
+        private readonly IFileService _FileService;
+        public AuctionService(FourEstateDbContext db, IMapper mapper, IFileService FileService)
         {
             _db = db;
             _mapper = mapper;
-            _fileService = fileService;
+            _FileService = FileService;
         }
 
 
         public async Task<ResponseDto> GetAll(Pagination pagination, Query query)
         {
-            var queryString = _db.Auctions.Include(x => x.RealEstate).Where(x => !x.IsDelete && (x.Title.Contains(query.GeneralSearch) || string.IsNullOrWhiteSpace(query.GeneralSearch))).AsQueryable();
+            var queryString = _db.AuctionsDb.Include(x=>x.Attachments).Include(x => x.RealEstate)
+                .Where(x => !x.IsDelete && (x.Title.Contains(query.GeneralSearch) || string.IsNullOrWhiteSpace(query.GeneralSearch)))
+                .AsQueryable();
+
 
             var dataCount = queryString.Count();
             var skipValue = pagination.GetSkipValue();
             var dataList = await queryString.Skip(skipValue).Take(pagination.PerPage).ToListAsync();
-            var auction = _mapper.Map<List<AuctionViewModel>>(dataList);
+            var auction = _mapper.Map<List<AuctionDbViewModel>>(dataList);
+
             var pages = pagination.GetPages(dataCount);
             var result = new ResponseDto
             {
@@ -54,73 +57,39 @@ namespace FourEstate.Infrastructure.Services.Auctions
         }
 
 
-
-
-        public async Task<List<AuctionViewModel>> GetAllAPI(/*int page*/string serachKey)
+        public async Task<List<AuctionDbViewModel>> GetAllAPI(string serachKey)
         {
-            var auction = await _db.Auctions.Include(x => x.RealEstate).Where(x => x.Title.Contains(serachKey) || string.IsNullOrWhiteSpace(serachKey)).ToListAsync();
-            return _mapper.Map<List<AuctionViewModel>>(auction);
-
-
+            var buycontract = await _db.AuctionsDb.Include(x=>x.Attachments)
+                .Include(x => x.RealEstate).ThenInclude(x => x.Location)
+                .Include(x => x.RealEstate).ThenInclude(x => x.Category)
+                .Where(x => x.Stauts.ToString().Contains(serachKey) || string.IsNullOrWhiteSpace(serachKey))
+                .ToListAsync();
+            return _mapper.Map<List<AuctionDbViewModel>>(buycontract);
         }
+
+
+
 
 
         public async Task<List<ContentChangeLogViewModel>> GetLog(int id)
         {
-            var changes = await _db.ContentChangeLogs.Where(x => x.ContentId == id && x.Type == ContentType.RealEstate).ToListAsync();
+            var changes = await _db.ContentChangeLogs.Where(x => x.ContentId == id ).ToListAsync();
             return _mapper.Map<List<ContentChangeLogViewModel>>(changes);
         }
 
 
 
-
-        public async Task<List<AuctionViewModel>> GetAuctionName()
+        public async Task<List<AuctionDbViewModel>> GetAuctionName()
         {
-            var auction = await _db.Auctions.Where(x => !x.IsDelete).ToListAsync();
-            return _mapper.Map<List<AuctionViewModel>>(auction);
+            var auctionDb = await _db.Contracts.Where(x => !x.IsDelete).ToListAsync();
+            return _mapper.Map<List<AuctionDbViewModel>>(auctionDb);
         }
-
-
-        public async Task<int> Delete(int id)
-        {
-            var auction = await _db.Auctions.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
-            if (auction == null)
-            {
-                throw new EntityNotFoundException();
-            }
-            auction.IsDelete = true;
-            _db.Auctions.Update(auction);
-            await _db.SaveChangesAsync();
-            return auction.Id;
-        }
-
-
-
-        public async Task<UpdateAuctionDto> Get(int id)
-        {
-            var auction = await _db.Auctions.Include(x => x.RealEstate).Include(x => x.Attachments).SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
-            if (auction == null)
-            {
-                throw new EntityNotFoundException();
-            }
-            var dto = _mapper.Map<UpdateAuctionDto>(auction);
-
-
-            if (auction.Attachments != null)
-            {
-                dto.AuctionAttachments = _mapper.Map<List<AuctionAttachmentViewModel>>(auction.Attachments);
-            }
-
-            return dto;
-        }
-
-
 
 
         public async Task<int> Create(CreateAuctionDto dto)
         {
-            var auctions = _mapper.Map<Auction>(dto);
-            await _db.Auctions.AddAsync(auctions);
+            var auctoinDb = _mapper.Map<CreateAuctionDto, AuctionDb>(dto);
+            await _db.AuctionsDb.AddAsync(auctoinDb);
             await _db.SaveChangesAsync();
 
 
@@ -128,116 +97,137 @@ namespace FourEstate.Infrastructure.Services.Auctions
             {
                 foreach (var a in dto.Attachments)
                 {
-                    var auctionsAttachment = new AuctionAttachment();
-                    auctionsAttachment.AttachmentUrl = await _fileService.SaveFile(a, "Images");
-                    auctionsAttachment.AuctionId = auctions.Id;
-                    await _db.AuctionAttachments.AddAsync(auctionsAttachment);
+                    var auctionDbAttachment = new AuctionDbAttachment();
+                    auctionDbAttachment.AttachmentUrl = await _FileService.SaveFile(a, "Images");
+                    auctionDbAttachment.AuctionDbId = auctoinDb.Id;
+                    await _db.AuctionDbAttachments.AddAsync(auctionDbAttachment);
                     await _db.SaveChangesAsync();
                 }
             }
-            return auctions.Id;
+            return auctoinDb.Id;
         }
 
-
+        
+        
         public async Task<int> Update(UpdateAuctionDto dto)
         {
-
-            var auctions = await _db.Auctions.SingleOrDefaultAsync(x => x.Id == dto.Id && !x.IsDelete);
-            if (auctions == null)
+            var auctionDb = await _db.AuctionsDb.SingleOrDefaultAsync(x => !x.IsDelete && x.Id == dto.Id);
+            if (auctionDb == null)
             {
                 throw new EntityNotFoundException();
             }
-
-            var updatedauctions = _mapper.Map(dto, auctions);
-            _db.Auctions.Update(updatedauctions);
+            var updatedauctionDb = _mapper.Map<UpdateAuctionDto, AuctionDb>(dto, auctionDb);
+            _db.AuctionsDb.Update(updatedauctionDb);
             await _db.SaveChangesAsync();
 
             if (dto.Attachments != null)
             {
                 foreach (var a in dto.Attachments)
                 {
-                    var auctionAttachment = new AuctionAttachment();
-                    auctionAttachment.AttachmentUrl = await _fileService.SaveFile(a, "Images");
-                    auctionAttachment.AuctionId = auctions.Id;
-                    await _db.AuctionAttachments.AddAsync(auctionAttachment);
+                    var auctionDbAttachment = new AuctionDbAttachment();
+                    auctionDbAttachment.AttachmentUrl = await _FileService.SaveFile(a, "Images");
+                    auctionDbAttachment.AuctionDbId = updatedauctionDb.Id;
+                    await _db.AuctionDbAttachments.AddAsync(auctionDbAttachment);
                     await _db.SaveChangesAsync();
                 }
             }
-
-
-
-            return auctions.Id;
+            return updatedauctionDb.Id;
         }
+
+
+        public async Task<UpdateAuctionDto> Get(int Id)
+        {
+            var auctionDb = await _db.AuctionsDb.SingleOrDefaultAsync(x => x.Id == Id && !x.IsDelete);
+            if (auctionDb == null)
+            {
+                throw new EntityNotFoundException();
+            }
+            return _mapper.Map<UpdateAuctionDto>(auctionDb);
+        }
+
+
+
+        public async Task<int> Delete(int Id)
+        {
+            var auctionDb = await _db.AuctionsDb.SingleOrDefaultAsync(x => x.Id == Id && !x.IsDelete);
+            if (auctionDb == null)
+            {
+                throw new EntityNotFoundException();
+            }
+            auctionDb.IsDelete = true;
+            _db.AuctionsDb.Update(auctionDb);
+            await _db.SaveChangesAsync();
+            return auctionDb.Id;
+        }
+
+
+
 
         public async Task<int> UpdateStatus(int id, ContentStatus status)
         {
-            var auctions = await _db.Auctions.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
-            if (auctions == null)
+            var auctionDb = await _db.AuctionsDb.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+            if (auctionDb == null)
             {
                 throw new EntityNotFoundException();
             }
 
             var changeLog = new ContentChangeLog();
-            changeLog.ContentId = auctions.Id;
-            changeLog.Type = ContentType.RealEstate;
-            changeLog.Old = auctions.Stauts;
+            changeLog.ContentId = auctionDb.Id;
+            changeLog.Type = ContentType.Auction;
+            changeLog.Old = auctionDb.Stauts;
             changeLog.New = status;
             changeLog.ChangeAt = DateTime.Now;
 
             await _db.ContentChangeLogs.AddAsync(changeLog);
             await _db.SaveChangesAsync();
 
-            auctions.Stauts = status;
-            _db.Auctions.Update(auctions);
+
+            auctionDb.Stauts = status;
+            _db.AuctionsDb.Update(auctionDb);
             await _db.SaveChangesAsync();
 
             //await _emailService.Send(post.Author.Email, "UPDATE POST STATUS !", $"YOUR POST NOW IS {status.ToString()}");
 
-            return auctions.Id;
+            return auctionDb.Id;
         }
-
-
 
 
 
         public async Task<byte[]> ExportToExcel()
         {
-            var auction = await _db.Auctions.Where(x => !x.IsDelete).ToListAsync();
+            var auctionDb = await _db.AuctionsDb.Include(x => x.RealEstate).Where(x => !x.IsDelete).ToListAsync();
 
             return ExcelHelpers.ToExcel(new Dictionary<string, ExcelColumn>
             {
-                {"Name", new ExcelColumn("Name", 0)},
-                {"Description", new ExcelColumn("Description", 1)},
-                {"DOAuction", new ExcelColumn("DOAuction", 2)},
-                {"AuctionType", new ExcelColumn("AuctionType", 3)},
-                {"NumberOfPieces", new ExcelColumn("NumberOfPieces", 4)}
-            }, new List<ExcelRow>(auction.Select(e => new ExcelRow
+                {"CourtType", new ExcelColumn("CourtType", 0)},
+                {"AuctionType", new ExcelColumn("AuctionType", 1)},
+                {"RealEstate", new ExcelColumn("RealEstate", 2)},
+                {"DOAuction", new ExcelColumn("DOAuction", 3)}
+            }, new List<ExcelRow>(auctionDb.Select(e => new ExcelRow
             {
                 Values = new Dictionary<string, string>
                 {
-                    {"Name", e.Title},
-                    {"Description", e.Description},
-                    {"DOAuction", e.DOAuction.ToString()},
+                    {"CourtType", e.CourtType.ToString()},
                     {"AuctionType", e.AuctionType.ToString()},
-                    {"NumberOfPieces", e.NumberOfPieces.ToString()}
+                    {"RealEstate", e.RealEstate.Name},
+                    {"DOAuction", e.DOAuction.ToString()}
                 }
             })));
+     
         }
 
 
         public async Task<int> RemoveAttachment(int id)
         {
-            var auction = await _db.AuctionAttachments.SingleOrDefaultAsync(x => x.Id == id);
-            if (auction == null)
+            var auctionDb = await _db.AuctionDbAttachments.SingleOrDefaultAsync(x => x.Id == id);
+            if (auctionDb == null)
             {
                 throw new EntityNotFoundException();
             }
-            _db.AuctionAttachments.Remove(auction);
+            _db.AuctionDbAttachments.Remove(auctionDb);
             await _db.SaveChangesAsync();
-            return auction.Id;
+            return auctionDb.Id;
         }
+
     }
 }
-
-
-

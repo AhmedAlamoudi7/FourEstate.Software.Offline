@@ -14,6 +14,11 @@ namespace FourEstate.Data
             : base(options)
         {
         }
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    base.OnModelCreating(builder);
+        //    builder.Entity<Invoice>().Property(x => x.FullValueWithOutTaxValue).HasComputedColumnSql("[]");
+        //}
         public DbSet<Customer> Customers { get; set; }
         public DbSet<RealEstate> RealEstates { get; set; }
         public DbSet<Contract> Contracts { get; set; }
@@ -23,8 +28,17 @@ namespace FourEstate.Data
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<ContentChangeLog> ContentChangeLogs { get; set; }
         public DbSet<Holiday> Holidays { get; set; }
-        public DbSet<Auction> Auctions { get; set; }
-        public DbSet<AuctionAttachment> AuctionAttachments { get; set; }
+        public DbSet<AuctionDb> AuctionsDb { get; set; }
+        public DbSet<AuctionDbAttachment> AuctionDbAttachments { get; set; }
+        public DbSet<RentContract> RentContracts { get; set; }
+        public DbSet<SaleContract> SaleContracts { get; set; }
+        public DbSet<BuyContract> BuyContracts { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Receipt> Receipts { get; set; }
+        public DbSet<CatchReceipt> CatchReceipts { get; set; }
+
+
+
 
 
 

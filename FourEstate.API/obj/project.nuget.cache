@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dvhZe7Ks8hHpt0pnYyWgvjOHIC08+dT9jFg6IkVaKzpeufKRCHbimNYQRJM9nluImhYgu8gLr0KnrN6SoTaiRw==",
+  "dgSpecHash": "wC6yodqgshAuij3fsG9xTl56jciWcVoVk03UTKbExZhdtCYXcITqFX4oK2g3AykQQ2Ys1IRYURI7tK6HjQ7nqg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.API\\FourEstate.API.csproj",
+  "projectFilePath": "C:\\Users\\khatib\\Desktop\\Folders\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.API\\FourEstate.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khatib\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\khatib\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

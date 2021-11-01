@@ -72,11 +72,33 @@ namespace FourEstate.Infrastructure.AutoMapper
                 .ForMember(x => x.Image, x => x.Ignore());
 
 
+
+            /// contracts Mapper
             CreateMap<Contract, ContractViewModel>()
                 .ForMember(x => x.Status, x => x.MapFrom(x => x.Stauts.ToString()));
             CreateMap<CreateContractDto, Contract>();
             CreateMap<UpdateContractDto, Contract>();
             CreateMap<Contract, UpdateContractDto>();
+
+            CreateMap<SaleContract, SaleContractViewModel>()
+               .ForMember(x => x.Status, x => x.MapFrom(x => x.Stauts.ToString()));
+            CreateMap<CreateSaleContractDto, SaleContract>();
+            CreateMap<UpdateSaleContractDto, SaleContract>();
+            CreateMap<SaleContract, UpdateSaleContractDto>();
+
+            CreateMap<BuyContract, BuyContractViewModel>()
+               .ForMember(x => x.Status, x => x.MapFrom(x => x.Stauts.ToString()));
+            CreateMap<CreateBuyContractDto, BuyContract>();
+            CreateMap<UpdateBuyContractDto, BuyContract>();
+            CreateMap<BuyContract, UpdateBuyContractDto>();
+
+            CreateMap<RentContract, RentContractViewModel>()
+               .ForMember(x => x.Status, x => x.MapFrom(x => x.Stauts.ToString()));
+            CreateMap<CreateRentContractDto, RentContract>();
+            CreateMap<UpdateRentContractDto, RentContract>();
+            CreateMap<RentContract, UpdateRentContractDto>();
+
+            //////
 
 
             CreateMap<ContentChangeLog, ContentChangeLogViewModel>();
@@ -90,18 +112,54 @@ namespace FourEstate.Infrastructure.AutoMapper
             CreateMap<Holiday, UpdateHolidayDto>();
 
 
-            CreateMap<Auction, AuctionViewModel>()
+
+
+
+            CreateMap<AuctionDb, AuctionDbViewModel>()
                 .ForMember(x => x.Status, x => x.MapFrom(x => x.Stauts.ToString()))
                 .ForMember(x => x.DOAuction, x => x.MapFrom(x => x.DOAuction.ToString("yyyy:MM:dd")));
 
-            CreateMap<CreateAuctionDto, Auction>()
+            CreateMap<CreateAuctionDto, AuctionDb>()
                 .ForMember(x => x.Attachments, x => x.Ignore());
-            CreateMap<UpdateAuctionDto, Auction>()
+            CreateMap<UpdateAuctionDto, AuctionDb>()
                 .ForMember(x => x.Attachments, x => x.Ignore());
-            CreateMap<Auction, UpdateAuctionDto>()
+            CreateMap<AuctionDb, UpdateAuctionDto>()
                 .ForMember(x => x.Attachments, x => x.Ignore())
-                .ForMember(x => x.AuctionAttachments, x => x.Ignore());
-            CreateMap<AuctionAttachment, AuctionAttachmentViewModel>();
+                .ForMember(x => x.AuctionDbAttchment, x => x.Ignore());
+            CreateMap<AuctionDbAttachment,AuctionDbAttchmentViewModel>();
+
+
+
+
+
+
+            CreateMap<Invoice, InvoiceViewModel>();
+                //.ForMember(x => x.InvoiceDate, x => x.MapFrom(x => x.InvoiceDate.ToString("yyyy:MM:dd");
+            CreateMap<CreateInvoiceDto, Invoice>();
+            CreateMap<UpdateInvoiceDto, Invoice>();
+            CreateMap<Invoice, UpdateInvoiceDto>();
+
+
+            CreateMap<Receipt, ReceiptViewModel>()
+             .ForMember(x => x.DateTimeStart, x => x.MapFrom(x => x.DateTimeStart.ToString("yyyy:MM:dd")))
+             .ForMember(x => x.DateTimeEnd, x => x.MapFrom(x => x.DateTimeEnd.ToString("yyyy:MM:dd")))
+             .ForMember(x => x.DateReceipt, x => x.MapFrom(x => x.DateReceipt.ToString("yyyy:MM:dd")));
+
+            CreateMap<CreateReceiptDto, Receipt>();
+            CreateMap<UpdateReceiptDto, Receipt>();
+            CreateMap<Receipt, UpdateReceiptDto>();
+
+
+
+            CreateMap<CatchReceipt, CatchReceiptViewModel>()
+             .ForMember(x => x.DateTimeStart, x => x.MapFrom(x => x.DateTimeStart.ToString("yyyy:MM:dd")))
+             .ForMember(x => x.DateTimeEnd, x => x.MapFrom(x => x.DateTimeEnd.ToString("yyyy:MM:dd")))
+             .ForMember(x => x.DateReceipt, x => x.MapFrom(x => x.DateReceipt.ToString("yyyy:MM:dd")));
+
+            CreateMap<CreateCatchReceiptDto, CatchReceipt>();
+            CreateMap<UpdateCatchReceiptDto, CatchReceipt>();
+            CreateMap<CatchReceipt, UpdateCatchReceiptDto>();
+
         }
     }
 }

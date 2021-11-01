@@ -75,7 +75,7 @@ namespace FourEstate.Data.Migrations
                     b.ToTable("Advertisements");
                 });
 
-            modelBuilder.Entity("FourEstate.Data.Models.Auction", b =>
+            modelBuilder.Entity("FourEstate.Data.Models.AuctionDb", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,10 +125,10 @@ namespace FourEstate.Data.Migrations
 
                     b.HasIndex("RealEstateId");
 
-                    b.ToTable("Auctions");
+                    b.ToTable("AuctionsDb");
                 });
 
-            modelBuilder.Entity("FourEstate.Data.Models.AuctionAttachment", b =>
+            modelBuilder.Entity("FourEstate.Data.Models.AuctionDbAttachment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -139,14 +139,145 @@ namespace FourEstate.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("AuctionId")
+                    b.Property<int>("AuctionDbId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuctionId");
+                    b.HasIndex("AuctionDbId");
 
-                    b.ToTable("AuctionAttachments");
+                    b.ToTable("AuctionDbAttachments");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.BuyContract", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CurrenyType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DateTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DateType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FormulaContract")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LocationDetails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("RealEstateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stauts")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("RealEstateId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BuyContracts");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.CatchReceipt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateReceipt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTimeEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTimeStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InvoiceType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("RealEstateId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReceiptNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RentContractId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("ValueReceipt")
+                        .HasColumnType("float");
+
+                    b.Property<string>("statment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("RealEstateId");
+
+                    b.HasIndex("RentContractId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CatchReceipts");
                 });
 
             modelBuilder.Entity("FourEstate.Data.Models.Category", b =>
@@ -353,6 +484,81 @@ namespace FourEstate.Data.Migrations
                     b.ToTable("Holidays");
                 });
 
+            modelBuilder.Entity("FourEstate.Data.Models.Invoice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("BalanceDue")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("FullValueAfter")
+                        .HasColumnType("float");
+
+                    b.Property<double>("FullValueBefore")
+                        .HasColumnType("float");
+
+                    b.Property<double>("FullValueWithOutTaxValue")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("InvoiceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InvoiceNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("InvoiceType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Quentity")
+                        .HasColumnType("float");
+
+                    b.Property<int>("RealEstateId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("TaxValue")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("RealEstateId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Invoices");
+                });
+
             modelBuilder.Entity("FourEstate.Data.Models.Location", b =>
                 {
                     b.Property<int>("Id")
@@ -464,6 +670,195 @@ namespace FourEstate.Data.Migrations
                     b.HasIndex("RealEstateId");
 
                     b.ToTable("RealEstatetAttachments");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.Receipt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateReceipt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTimeEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateTimeStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InvoiceType")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("RealEstateId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReceiptNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RentContractId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("ValueReceipt")
+                        .HasColumnType("float");
+
+                    b.Property<string>("statment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("RealEstateId");
+
+                    b.HasIndex("RentContractId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Receipts");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.RentContract", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DateTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateTimeEndRent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DateTimeStartRent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DateType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FormulaContract")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NumberOfContract")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RealEstateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stauts")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("RealEstateId");
+
+                    b.ToTable("RentContracts");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.SaleContract", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CurrenyType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DateTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DateType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FormulaContract")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LocationDetails")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("RealEstateId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stauts")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("RealEstateId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SaleContracts");
                 });
 
             modelBuilder.Entity("FourEstate.Data.Models.User", b =>
@@ -702,7 +1097,7 @@ namespace FourEstate.Data.Migrations
                     b.Navigation("Owner");
                 });
 
-            modelBuilder.Entity("FourEstate.Data.Models.Auction", b =>
+            modelBuilder.Entity("FourEstate.Data.Models.AuctionDb", b =>
                 {
                     b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
                         .WithMany()
@@ -713,15 +1108,73 @@ namespace FourEstate.Data.Migrations
                     b.Navigation("RealEstate");
                 });
 
-            modelBuilder.Entity("FourEstate.Data.Models.AuctionAttachment", b =>
+            modelBuilder.Entity("FourEstate.Data.Models.AuctionDbAttachment", b =>
                 {
-                    b.HasOne("FourEstate.Data.Models.Auction", "Auction")
+                    b.HasOne("FourEstate.Data.Models.AuctionDb", "AuctionDb")
                         .WithMany("Attachments")
-                        .HasForeignKey("AuctionId")
+                        .HasForeignKey("AuctionDbId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Auction");
+                    b.Navigation("AuctionDb");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.BuyContract", b =>
+                {
+                    b.HasOne("FourEstate.Data.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
+                        .WithMany()
+                        .HasForeignKey("RealEstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("RealEstate");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.CatchReceipt", b =>
+                {
+                    b.HasOne("FourEstate.Data.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
+                        .WithMany()
+                        .HasForeignKey("RealEstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.RentContract", "RentContract")
+                        .WithMany()
+                        .HasForeignKey("RentContractId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("RealEstate");
+
+                    b.Navigation("RentContract");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FourEstate.Data.Models.Contract", b =>
@@ -754,6 +1207,31 @@ namespace FourEstate.Data.Migrations
                     b.Navigation("Location");
                 });
 
+            modelBuilder.Entity("FourEstate.Data.Models.Invoice", b =>
+                {
+                    b.HasOne("FourEstate.Data.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
+                        .WithMany()
+                        .HasForeignKey("RealEstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("RealEstate");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("FourEstate.Data.Models.RealEstate", b =>
                 {
                     b.HasOne("FourEstate.Data.Models.Category", "Category")
@@ -782,6 +1260,83 @@ namespace FourEstate.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("RealEstate");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.Receipt", b =>
+                {
+                    b.HasOne("FourEstate.Data.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
+                        .WithMany()
+                        .HasForeignKey("RealEstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.RentContract", "RentContract")
+                        .WithMany()
+                        .HasForeignKey("RentContractId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("RealEstate");
+
+                    b.Navigation("RentContract");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.RentContract", b =>
+                {
+                    b.HasOne("FourEstate.Data.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
+                        .WithMany()
+                        .HasForeignKey("RealEstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("RealEstate");
+                });
+
+            modelBuilder.Entity("FourEstate.Data.Models.SaleContract", b =>
+                {
+                    b.HasOne("FourEstate.Data.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.RealEstate", "RealEstate")
+                        .WithMany()
+                        .HasForeignKey("RealEstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FourEstate.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("RealEstate");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -835,7 +1390,7 @@ namespace FourEstate.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FourEstate.Data.Models.Auction", b =>
+            modelBuilder.Entity("FourEstate.Data.Models.AuctionDb", b =>
                 {
                     b.Navigation("Attachments");
                 });

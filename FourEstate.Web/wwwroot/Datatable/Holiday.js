@@ -54,11 +54,6 @@ var KTDatatableAutoColumnHideDemo = function () {
                     title: 'إلى ',
                     width: '100'
                 },
-                {
-                    field: '',
-                    title: 'إلى ',
-                    width: '100'
-                },
             {
                 field: 'Actions',
                 title: 'العمليات',

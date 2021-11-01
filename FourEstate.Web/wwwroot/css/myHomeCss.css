@@ -5,7 +5,7 @@
 /* start  Statices Section*/
 .Statices {
     width: 100%;
-    min-height: 300px;
+    min-height: 200px;
 }
 
 
@@ -18,8 +18,8 @@
     }
 
     .Statices .Statices-back .static-box img {
-        height: 157px;
-        width: 137px;
+        height: 73px;
+        width: 54px;
         padding-bottom: 20px;
         object-fit: cover;
     }
@@ -75,11 +75,11 @@
     font-size: large;
     font-weight: bolder;
     color: beige;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 32px;
     background-color: #4dbbc7;
     border-radius: 50%;
-    line-height: 40px;
+    line-height: 31px;
     -webkit-transition-duration: .7s;
     -moz-transition-duration: .7s;
     -o-transition-duration: .7s;

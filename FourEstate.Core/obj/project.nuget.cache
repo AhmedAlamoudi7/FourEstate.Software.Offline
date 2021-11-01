@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KljLGKHWdJqyhZNa5yCMhLaj7oA2ZUlwML80g9X6YYozYhvLnOUID1++6ptE8kfH1RaVHkmkRGFljRIBtCHfCg==",
+  "dgSpecHash": "59BDKDyzf3Kmh9iWllQ/QDqN6jZgFki57hhsgLZAvsaDiw5PKmw6OkOjU6CjnhKc1Cj4qaIv2Q7OwIogPB0Pnw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\khatib\\Desktop\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj",
+  "projectFilePath": "C:\\Users\\khatib\\Desktop\\Folders\\FourEstate -النسخة الoffline\\AhmedAlamoudi7\\FourEstate.Software\\FourEstate.Core\\FourEstate.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khatib\\.nuget\\packages\\closedxml\\0.95.4\\closedxml.0.95.4.nupkg.sha512",
     "C:\\Users\\khatib\\.nuget\\packages\\documentformat.openxml\\2.7.2\\documentformat.openxml.2.7.2.nupkg.sha512",

@@ -10,20 +10,16 @@ namespace FourEstate.Core.Dtos
 {
    public class CreateContractDto
     {
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [Display(Name = "نوع العقد")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب"), Display(Name = "نوع العقد")]
         public ContractType ContractType { get; set; }
 
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [Display(Name = "السعر")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب"), Display(Name = "السعر")]
         public double Price { get; set; }
 
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [Display(Name = "الزبون")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب"), Display(Name = "الزبون")]
         public int CustomerId { get; set; }
 
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [Display(Name = "العقار")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب"), Display(Name = "العقار")]
         public int RealEstatedId { get; set; }
     }
 }

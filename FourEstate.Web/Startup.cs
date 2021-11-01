@@ -1,13 +1,19 @@
 using FourEstate.Data;
 using FourEstate.Data.Models;
+using FourEstate.infrastructure.Services.Auctions;
+using FourEstate.infrastructure.Services.BuyContracts;
+using FourEstate.infrastructure.Services.CatchReceipts;
 using FourEstate.infrastructure.Services.ContractSS;
 using FourEstate.infrastructure.Services.Dashbords;
 using FourEstate.infrastructure.Services.Holidays;
+using FourEstate.infrastructure.Services.Invoices;
+using FourEstate.infrastructure.Services.Receipts;
+using FourEstate.infrastructure.Services.RentContracts;
+using FourEstate.infrastructure.Services.SaleContracts;
 using FourEstate.Infrastructure.AutoMapper;
 using FourEstate.Infrastructure.Middlewares;
 using FourEstate.Infrastructure.Services;
 using FourEstate.Infrastructure.Services.Advertisements;
-using FourEstate.Infrastructure.Services.Auctions;
 using FourEstate.Infrastructure.Services.Categories;
 using FourEstate.Infrastructure.Services.Customers;
 using FourEstate.Infrastructure.Services.LocationsService;
@@ -70,8 +76,13 @@ namespace FourEstate.Web
             services.AddScoped<IRealEstateService, RealEstateService>();
             services.AddScoped<IDashboardService, DashboardService>();
             services.AddScoped<IHolidayService, HolidayService>();
+            services.AddScoped<IRentContractService, RentContractService>();
+            services.AddScoped<IBuyContractService, BuyContractService>(); 
+            services.AddScoped<ISaleContractService, SaleContractService>();
             services.AddScoped<IAuctionService, AuctionService>();
-
+            services.AddScoped<IInvoiceServices, InvoiceService>();
+            services.AddScoped<IReceiptService, ReceiptService>();
+            services.AddScoped<ICatchReceiptService, CatchReceiptsService>();
 
 
 
@@ -104,8 +115,11 @@ namespace FourEstate.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+        
             app.UseEndpoints(endpoints =>
             {
+                
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

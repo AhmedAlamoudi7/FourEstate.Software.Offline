@@ -83,10 +83,14 @@ namespace FourEstate.Infrastructure.Services.Users
 
 
         }
-    
 
+        public async Task<List<UserViewModel>> GetUserFullName()
+        {
+            var user = await _db.Users.Where(x => !x.IsDelete).ToListAsync();
+            return _mapper.Map<List<UserViewModel>>(user);
 
-        public async Task<string> Create(CreateUserDto dto)
+        }
+            public async Task<string> Create(CreateUserDto dto)
         {
             var emailOrPhoneIsExist = _db.Users.Any(x => !x.IsDelete && (x.Email == dto.Email || x.PhoneNumber == dto.PhoneNumber));
 

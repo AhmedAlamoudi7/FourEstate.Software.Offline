@@ -35,6 +35,9 @@ namespace FourEstate.Data
                     context.SeedRealEstate().Wait();
                     context.SeedContract().Wait();
                     context.SeedHoliday().Wait();
+                    context.SeedSaleContract().Wait();
+                    context.SeedBuyContract().Wait();
+                    context.SeedRentContract().Wait();
 
                     //   //context.SeedAdvertisement().Wait();
 
@@ -69,7 +72,8 @@ namespace FourEstate.Data
                 UserType = UserType.Administrator,
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
-                IsDelete = false
+                IsDelete = false,
+                IsActive =true
             };
 
             var user2 = new User()
@@ -83,7 +87,9 @@ namespace FourEstate.Data
                 UserType = UserType.Customer,
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
-                IsDelete = false
+                IsDelete = false,
+                IsActive = true
+
             };
 
             var user3 = new User()
@@ -97,7 +103,9 @@ namespace FourEstate.Data
                 UserType = UserType.AdvertisementOwner,
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
-                IsDelete = false
+                IsDelete = false,
+                IsActive = true
+
             };
             var user4 = new User()
             {
@@ -110,7 +118,9 @@ namespace FourEstate.Data
                 UserType = UserType.Employee,
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
-                IsDelete = false
+                IsDelete = false,
+                IsActive = true
+
             };
 
 
@@ -280,7 +290,7 @@ namespace FourEstate.Data
             customer.ImageUrl = "";
             customer.Phone = "0831213312";
             customer.AnotherPhone = "1231231";
-            customer.CustomerType = Core.Constants.CustomerType.Person;
+            customer.CustomerType = Core.Enums.CustomerType.Person;
             customer.TaxNumber = "2333";
             customer.IdentityImage = "";
             customer.LocationId = 1;
@@ -295,7 +305,7 @@ namespace FourEstate.Data
             customer2.ImageUrl = "";
             customer2.Phone = "31241242";
             customer2.AnotherPhone = "12323";
-            customer2.CustomerType = Core.Constants.CustomerType.organization;
+            customer2.CustomerType = Core.Enums.CustomerType.organization;
             customer2.TaxNumber = "312312";
             customer2.IdentityImage = "";
             customer2.LocationId = 2;
@@ -310,7 +320,7 @@ namespace FourEstate.Data
             customer3.ImageUrl = "";
             customer3.Phone = "132424";
             customer3.AnotherPhone = "23434324";
-            customer3.CustomerType = Core.Constants.CustomerType.agent;
+            customer3.CustomerType = Core.Enums.CustomerType.agent;
             customer3.TaxNumber = "45244";
             customer3.IdentityImage = "";
             customer3.LocationId = 3;
@@ -325,7 +335,7 @@ namespace FourEstate.Data
             customer4.ImageUrl = "";
             customer4.Phone = "12312";
             customer4.AnotherPhone = "423434";
-            customer4.CustomerType = Core.Constants.CustomerType.ClientAuction;
+            customer4.CustomerType = Core.Enums.CustomerType.ClientAuction;
             customer4.TaxNumber = "766";
             customer4.IdentityImage = "";
             customer4.LocationId = 4;
@@ -488,6 +498,80 @@ namespace FourEstate.Data
 
         }
 
+        public static async Task SeedSaleContract(this FourEstateDbContext context)
+        {
+
+            if (await context.SaleContracts.AnyAsync())
+            {
+                return;
+            }
+
+            var saleContracts = new SaleContract();
+            saleContracts.RealEstateId = 1;
+            saleContracts.Price = 4444;
+            saleContracts.CustomerId = 1;
+            saleContracts.CurrenyType = Core.Enums.CurrenyType.Dollar;
+            saleContracts.FormulaContract = Core.Enums.FormulaContract.TamBeHamdallah;
+            saleContracts.LocationDetails = "Gaza";
+            saleContracts.DateType = Core.Enums.DateType.Gregorian;
+            saleContracts.CreatedAt = DateTime.Now;
+            saleContracts.IsDelete = false;
+
+            await context.SaleContracts.AddRangeAsync(saleContracts);
+            await context.SaveChangesAsync();
+
+
+        }
+        public static async Task SeedBuyContract(this FourEstateDbContext context)
+        {
+
+            if (await context.BuyContracts.AnyAsync())
+            {
+                return;
+            }
+
+            var buyContracts = new BuyContract();
+            buyContracts.RealEstateId = 1;
+            buyContracts.Price = 4444;
+            buyContracts.CustomerId = 1;
+            buyContracts.CurrenyType = Core.Enums.CurrenyType.Dollar;
+            buyContracts.FormulaContract = Core.Enums.FormulaContract.TamBeHamdallah;
+            buyContracts.LocationDetails = "Gaza";
+            buyContracts.DateType = Core.Enums.DateType.Gregorian;
+            buyContracts.CreatedAt = DateTime.Now;
+            buyContracts.IsDelete = false;
+
+            await context.BuyContracts.AddRangeAsync(buyContracts);
+            await context.SaveChangesAsync();
+
+
+        }
+
+        public static async Task SeedRentContract(this FourEstateDbContext context)
+        {
+
+            if (await context.RentContracts.AnyAsync())
+            {
+                return;
+            }
+
+            var rentContracts = new RentContract();
+            rentContracts.RealEstateId = 1;
+            rentContracts.CustomerId = 1;
+            rentContracts.NumberOfContract = "123123";
+            rentContracts.FormulaContract = Core.Enums.FormulaContract.TamBeHamdallah;
+            rentContracts.DateTime = "2020-2-2";
+            rentContracts.DateTimeStartRent = "2020-2-2";
+            rentContracts.DateTimeEndRent = "2020-5-2";
+            rentContracts.DateType = Core.Enums.DateType.Gregorian;
+            rentContracts.CreatedAt = DateTime.Now;
+            rentContracts.IsDelete = false;
+
+            await context.RentContracts.AddRangeAsync(rentContracts);
+            await context.SaveChangesAsync();
+
+
+        }
 
         public static async Task SeedHoliday(this FourEstateDbContext context)
         {

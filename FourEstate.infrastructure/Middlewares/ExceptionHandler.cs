@@ -39,6 +39,7 @@ namespace FourEstate.Infrastructure.Middlewares
                 case EntityNotFoundException _:
                 case OperationFailedException _:
                 case InvalidDataException _:
+                    //response.msg = "/Error/PageNotFound";
 
                     response.msg = $"e:{exception.Message}";
                     response.close = 0;

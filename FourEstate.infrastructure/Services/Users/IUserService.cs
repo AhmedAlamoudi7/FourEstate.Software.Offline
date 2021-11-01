@@ -13,7 +13,7 @@ namespace FourEstate.Infrastructure.Services.Users
     {
         Task<ResponseDto> GetAll(Pagination pagination, Query query);
         Task<List<UserViewModel>> GetAllAPI(string serachKey);
-
+        Task<List<UserViewModel>> GetUserFullName();
         UserViewModel GetUserByName(string UserName);
         Task<string> Create(CreateUserDto dto);
         Task<string> Update(UpdateUserDto dto);
