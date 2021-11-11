@@ -22,7 +22,6 @@ namespace FourEstate.API.Controllers
         //{
         //    _userService = userService;
         //}
-
         protected string UserId = "";
 
         public override void OnActionExecuting(ActionExecutingContext context)
