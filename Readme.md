@@ -2,4 +2,4 @@
 <a href="https://files.fm/f/3xsx25rj4"><img src="https://files.fm/thumb_show.php?i=3xsx25rj4"></a>
 <a href="https://files.fm/u/tpccysgzn#/view/Login.png"><img src="https://files.fm/thumb_show.php?i=ph58ctgrf"></a>
 
-<video autoplay muted loop id="myVideo" style="width:1000px;" ><source src="https://files.fm/pa/AhmedAlamoudi/Robot+-+12567.mp4/Robot+-+12567.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>
+<a href="https://files.fm/f/ws3e627vw"><img src="https://files.fm/thumb_show.php?i=ws3e627vw"></a>
